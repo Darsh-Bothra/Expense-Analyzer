@@ -1,0 +1,1001 @@
+date,merchant,amount,type
+2025-01-02,McDonald's,505,Debit
+2025-01-02,Myntra,1457,Debit
+2025-01-02,Rapido,92,Debit
+2025-01-03,Ajio,1051,Debit
+2025-01-03,Ola,284,Debit
+2025-01-03,Rapido,83,Debit
+2025-01-03,Rapido,102,Debit
+2025-01-04,BookMyShow,282,Debit
+2025-01-04,Salary,48000,Credit
+2025-01-04,Uber Eats,275,Debit
+2025-01-04,Uber Eats,552,Debit
+2025-01-05,BigBasket,855,Debit
+2025-01-05,McDonald's,412,Debit
+2025-01-05,Netflix,649,Debit
+2025-01-05,Starbucks,381,Debit
+2025-01-05,Zomato,871,Debit
+2025-01-06,Ola,569,Debit
+2025-01-06,Spotify,119,Debit
+2025-01-06,Uber Eats,704,Debit
+2025-01-07,Flipkart,3643,Debit
+2025-01-07,Hotstar,299,Debit
+2025-01-07,Uber,560,Debit
+2025-01-07,Uber Eats,683,Debit
+2025-01-08,Airtel,599,Debit
+2025-01-08,Google Play,107,Debit
+2025-01-08,McDonald's,375,Debit
+2025-01-08,Ola,393,Debit
+2025-01-08,Zomato,299,Debit
+2025-01-09,Jio,599,Debit
+2025-01-09,McDonald's,181,Debit
+2025-01-09,Starbucks,356,Debit
+2025-01-10,Prime,1499,Debit
+2025-01-10,Swiggy,449,Debit
+2025-01-10,Uber Eats,583,Debit
+2025-01-11,Flipkart,2608,Debit
+2025-01-11,Starbucks,411,Debit
+2025-01-11,Uber Eats,739,Debit
+2025-01-12,BookMyShow,496,Debit
+2025-01-12,Electricity,1963,Debit
+2025-01-12,Myntra,1858,Debit
+2025-01-12,Zomato,246,Debit
+2025-01-13,Domino's,854,Debit
+2025-01-13,Uber,620,Debit
+2025-01-14,Domino's,769,Debit
+2025-01-14,McDonald's,461,Debit
+2025-01-14,Rapido,148,Debit
+2025-01-15,Ola,453,Debit
+2025-01-15,Zomato,460,Debit
+2025-01-16,Google Play,372,Debit
+2025-01-16,McDonald's,276,Debit
+2025-01-16,Rapido,98,Debit
+2025-01-16,Swiggy,433,Debit
+2025-01-17,Flipkart,1539,Debit
+2025-01-17,Swiggy,212,Debit
+2025-01-17,Zomato,602,Debit
+2025-01-18,Amazon,3830,Debit
+2025-01-18,BookMyShow,670,Debit
+2025-01-18,McDonald's,414,Debit
+2025-01-18,Starbucks,462,Debit
+2025-01-18,Zomato,684,Debit
+2025-01-19,BookMyShow,446,Debit
+2025-01-19,McDonald's,353,Debit
+2025-01-19,Rapido,126,Debit
+2025-01-19,Uber Eats,320,Debit
+2025-01-20,Amazon,1063,Debit
+2025-01-20,McDonald's,273,Debit
+2025-01-20,Rapido,65,Debit
+2025-01-20,Uber,346,Debit
+2025-01-20,Zomato,624,Debit
+2025-01-21,Petrol Pump,504,Debit
+2025-01-21,Swiggy,828,Debit
+2025-01-21,Uber,562,Debit
+2025-01-22,Ola,256,Debit
+2025-01-22,Zomato,661,Debit
+2025-01-23,Ola,447,Debit
+2025-01-23,Uber,217,Debit
+2025-01-24,Ajio,1528,Debit
+2025-01-24,Rapido,74,Debit
+2025-01-24,Starbucks,251,Debit
+2025-01-25,BookMyShow,372,Debit
+2025-01-25,Ola,112,Debit
+2025-01-25,Starbucks,261,Debit
+2025-01-25,Zomato,270,Debit
+2025-01-26,BookMyShow,935,Debit
+2025-01-26,Rapido,52,Debit
+2025-01-26,Rapido,173,Debit
+2025-01-26,Swiggy,814,Debit
+2025-01-27,ATM Withdrawal,1319,Debit
+2025-01-27,McDonald's,247,Debit
+2025-01-27,Ola,494,Debit
+2025-01-27,Rapido,150,Debit
+2025-01-28,Myntra,1245,Debit
+2025-01-28,Ola,370,Debit
+2025-01-28,Uber,570,Debit
+2025-01-28,Zomato,718,Debit
+2025-01-29,Domino's,891,Debit
+2025-01-29,Domino's,942,Debit
+2025-01-29,Flipkart,1482,Debit
+2025-01-29,Ola,449,Debit
+2025-01-29,Pharmacy,880,Debit
+2025-01-30,Domino's,481,Debit
+2025-01-30,Domino's,638,Debit
+2025-01-30,Uber,471,Debit
+2025-01-31,DMart,1061,Debit
+2025-01-31,Swiggy,274,Debit
+2025-01-31,Uber,121,Debit
+2025-01-31,Zomato,596,Debit
+2025-02-01,McDonald's,467,Debit
+2025-02-01,Salary,50000,Credit
+2025-02-01,Uber,603,Debit
+2025-02-01,Uber Eats,736,Debit
+2025-02-02,Ola,296,Debit
+2025-02-02,Uber,334,Debit
+2025-02-02,Zomato,640,Debit
+2025-02-03,McDonald's,320,Debit
+2025-02-03,Rapido,144,Debit
+2025-02-03,Uber,301,Debit
+2025-02-04,Myntra,2285,Debit
+2025-02-04,Ola,122,Debit
+2025-02-04,Uber,571,Debit
+2025-02-04,Uber,613,Debit
+2025-02-05,Amazon,3432,Debit
+2025-02-05,Netflix,649,Debit
+2025-02-05,Uber Eats,521,Debit
+2025-02-06,Ola,289,Debit
+2025-02-06,Ola,522,Debit
+2025-02-06,Spotify,119,Debit
+2025-02-07,Domino's,491,Debit
+2025-02-07,Hotstar,299,Debit
+2025-02-07,Swiggy,377,Debit
+2025-02-07,Uber,615,Debit
+2025-02-08,Airtel,599,Debit
+2025-02-08,Myntra,1330,Debit
+2025-02-08,Starbucks,389,Debit
+2025-02-08,Uber,428,Debit
+2025-02-09,BookMyShow,1171,Debit
+2025-02-09,Domino's,671,Debit
+2025-02-09,Jio,239,Debit
+2025-02-09,Rapido,116,Debit
+2025-02-10,Google Play,218,Debit
+2025-02-10,Rapido,90,Debit
+2025-02-10,Rapido,120,Debit
+2025-02-10,Uber Eats,666,Debit
+2025-02-11,Rapido,95,Debit
+2025-02-11,Uber Eats,347,Debit
+2025-02-12,Electricity,1609,Debit
+2025-02-12,McDonald's,287,Debit
+2025-02-12,McDonald's,331,Debit
+2025-02-12,Rapido,84,Debit
+2025-02-12,Rapido,137,Debit
+2025-02-13,BESCOM,2292,Debit
+2025-02-13,Rapido,122,Debit
+2025-02-13,Starbucks,396,Debit
+2025-02-13,Swiggy,491,Debit
+2025-02-14,Domino's,532,Debit
+2025-02-14,Flipkart,3154,Debit
+2025-02-14,McDonald's,266,Debit
+2025-02-14,Rapido,125,Debit
+2025-02-15,Ajio,2313,Debit
+2025-02-15,McDonald's,492,Debit
+2025-02-15,Rapido,178,Debit
+2025-02-15,Swiggy,430,Debit
+2025-02-16,Amazon,3781,Debit
+2025-02-16,BookMyShow,1073,Debit
+2025-02-16,Uber Eats,338,Debit
+2025-02-16,Zomato,351,Debit
+2025-02-17,Ola,178,Debit
+2025-02-17,Swiggy,750,Debit
+2025-02-17,Uber Eats,711,Debit
+2025-02-18,Ola,423,Debit
+2025-02-18,Uber,465,Debit
+2025-02-19,Rapido,113,Debit
+2025-02-19,Starbucks,448,Debit
+2025-02-20,Ajio,657,Debit
+2025-02-20,Ola,430,Debit
+2025-02-20,Uber,533,Debit
+2025-02-20,Zomato,852,Debit
+2025-02-21,Domino's,677,Debit
+2025-02-21,Flipkart,1346,Debit
+2025-02-21,Swiggy,715,Debit
+2025-02-22,Ajio,1296,Debit
+2025-02-22,Cashback,329,Credit
+2025-02-22,Domino's,905,Debit
+2025-02-22,McDonald's,388,Debit
+2025-02-22,Zomato,225,Debit
+2025-02-23,BookMyShow,649,Debit
+2025-02-23,Starbucks,414,Debit
+2025-02-23,Uber,194,Debit
+2025-02-24,Rapido,96,Debit
+2025-02-24,Swiggy,237,Debit
+2025-02-25,McDonald's,316,Debit
+2025-02-25,McDonald's,352,Debit
+2025-02-25,Rapido,82,Debit
+2025-02-26,Ajio,776,Debit
+2025-02-26,Domino's,643,Debit
+2025-02-26,Rapido,46,Debit
+2025-02-27,Domino's,738,Debit
+2025-02-27,Ola,499,Debit
+2025-02-27,Starbucks,294,Debit
+2025-02-28,DMart,1318,Debit
+2025-02-28,Ola,119,Debit
+2025-02-28,Swiggy,482,Debit
+2025-03-01,BookMyShow,270,Debit
+2025-03-01,McDonald's,457,Debit
+2025-03-01,Salary,48000,Credit
+2025-03-01,Uber Eats,261,Debit
+2025-03-02,ATM Withdrawal,1438,Debit
+2025-03-02,BookMyShow,627,Debit
+2025-03-02,Swiggy,547,Debit
+2025-03-02,Swiggy,757,Debit
+2025-03-03,Ola,162,Debit
+2025-03-03,Rapido,46,Debit
+2025-03-04,Rapido,97,Debit
+2025-03-04,Uber,158,Debit
+2025-03-05,ATM Withdrawal,836,Debit
+2025-03-05,Netflix,649,Debit
+2025-03-05,Rapido,139,Debit
+2025-03-05,Uber Eats,528,Debit
+2025-03-06,McDonald's,441,Debit
+2025-03-06,McDonald's,518,Debit
+2025-03-06,Ola,116,Debit
+2025-03-06,Spotify,119,Debit
+2025-03-07,Domino's,820,Debit
+2025-03-07,Hotstar,299,Debit
+2025-03-07,Starbucks,244,Debit
+2025-03-08,Airtel,999,Debit
+2025-03-08,Starbucks,467,Debit
+2025-03-08,Uber,318,Debit
+2025-03-09,BookMyShow,279,Debit
+2025-03-09,Domino's,811,Debit
+2025-03-09,Jio,399,Debit
+2025-03-09,Ola,401,Debit
+2025-03-09,Uber,609,Debit
+2025-03-10,McDonald's,288,Debit
+2025-03-10,Ola,560,Debit
+2025-03-10,Uber Eats,275,Debit
+2025-03-11,Ola,394,Debit
+2025-03-11,Starbucks,317,Debit
+2025-03-11,Swiggy,437,Debit
+2025-03-12,Electricity,1465,Debit
+2025-03-12,Flipkart,2055,Debit
+2025-03-12,McDonald's,409,Debit
+2025-03-12,McDonald's,497,Debit
+2025-03-13,Ola,491,Debit
+2025-03-13,Ola,534,Debit
+2025-03-13,Starbucks,408,Debit
+2025-03-14,Domino's,607,Debit
+2025-03-14,McDonald's,504,Debit
+2025-03-14,Ola,171,Debit
+2025-03-15,BSNL,499,Debit
+2025-03-15,Domino's,887,Debit
+2025-03-15,Uber Eats,715,Debit
+2025-03-15,Uber Eats,779,Debit
+2025-03-16,McDonald's,279,Debit
+2025-03-16,Uber,403,Debit
+2025-03-16,Uber Eats,766,Debit
+2025-03-16,Zomato,480,Debit
+2025-03-17,Ola,335,Debit
+2025-03-17,Ola,350,Debit
+2025-03-17,Starbucks,449,Debit
+2025-03-18,Domino's,426,Debit
+2025-03-18,Google Play,400,Debit
+2025-03-18,McDonald's,238,Debit
+2025-03-18,Refund,261,Credit
+2025-03-19,Domino's,527,Debit
+2025-03-19,Flipkart,884,Debit
+2025-03-19,Zomato,776,Debit
+2025-03-20,Rapido,70,Debit
+2025-03-20,Starbucks,335,Debit
+2025-03-21,Rapido,65,Debit
+2025-03-21,Starbucks,439,Debit
+2025-03-21,Uber,140,Debit
+2025-03-22,Ajio,1910,Debit
+2025-03-22,Uber,200,Debit
+2025-03-22,Uber,262,Debit
+2025-03-22,Zomato,445,Debit
+2025-03-23,BookMyShow,480,Debit
+2025-03-23,Flipkart,2140,Debit
+2025-03-23,Rapido,107,Debit
+2025-03-23,Uber,593,Debit
+2025-03-23,Uber Eats,684,Debit
+2025-03-24,Domino's,514,Debit
+2025-03-24,Flipkart,3645,Debit
+2025-03-25,Starbucks,222,Debit
+2025-03-25,Uber,359,Debit
+2025-03-26,Ajio,2003,Debit
+2025-03-26,Uber,426,Debit
+2025-03-26,Uber Eats,697,Debit
+2025-03-27,Domino's,390,Debit
+2025-03-27,Swiggy,414,Debit
+2025-03-28,Domino's,680,Debit
+2025-03-29,BookMyShow,849,Debit
+2025-03-29,McDonald's,445,Debit
+2025-03-29,Swiggy,820,Debit
+2025-03-30,BookMyShow,414,Debit
+2025-03-30,McDonald's,358,Debit
+2025-03-30,Starbucks,471,Debit
+2025-03-31,Domino's,760,Debit
+2025-03-31,Rapido,131,Debit
+2025-04-01,Domino's,468,Debit
+2025-04-01,Salary,48000,Credit
+2025-04-01,Zomato,525,Debit
+2025-04-02,Myntra,2640,Debit
+2025-04-02,Ola,137,Debit
+2025-04-02,Rapido,96,Debit
+2025-04-03,Domino's,883,Debit
+2025-04-03,Ola,334,Debit
+2025-04-04,Petrol Pump,690,Debit
+2025-04-04,Uber Eats,465,Debit
+2025-04-04,Zomato,717,Debit
+2025-04-05,BookMyShow,983,Debit
+2025-04-05,Domino's,775,Debit
+2025-04-05,Netflix,649,Debit
+2025-04-05,Swiggy,652,Debit
+2025-04-06,McDonald's,421,Debit
+2025-04-06,Rapido,77,Debit
+2025-04-06,Rapido,177,Debit
+2025-04-06,Spotify,119,Debit
+2025-04-07,Ajio,1195,Debit
+2025-04-07,Hotstar,299,Debit
+2025-04-07,Uber,167,Debit
+2025-04-08,Airtel,599,Debit
+2025-04-08,Swiggy,469,Debit
+2025-04-08,Uber Eats,446,Debit
+2025-04-09,Jio,239,Debit
+2025-04-09,McDonald's,519,Debit
+2025-04-09,Rapido,179,Debit
+2025-04-09,Zomato,657,Debit
+2025-04-10,Ajio,977,Debit
+2025-04-10,Prime,1499,Debit
+2025-04-10,Uber Eats,559,Debit
+2025-04-11,Domino's,834,Debit
+2025-04-11,Uber Eats,520,Debit
+2025-04-12,Electricity,2434,Debit
+2025-04-12,McDonald's,496,Debit
+2025-04-12,Myntra,1010,Debit
+2025-04-12,Zomato,707,Debit
+2025-04-13,BESCOM,2216,Debit
+2025-04-13,BookMyShow,730,Debit
+2025-04-13,Rapido,161,Debit
+2025-04-13,Uber Eats,367,Debit
+2025-04-14,Rapido,42,Debit
+2025-04-14,Rapido,176,Debit
+2025-04-14,Starbucks,423,Debit
+2025-04-15,Pharmacy,360,Debit
+2025-04-15,Zomato,884,Debit
+2025-04-16,Domino's,582,Debit
+2025-04-16,Google Play,409,Debit
+2025-04-16,Uber Eats,676,Debit
+2025-04-17,DMart,1935,Debit
+2025-04-17,McDonald's,508,Debit
+2025-04-17,Uber,143,Debit
+2025-04-18,Ajio,1768,Debit
+2025-04-18,McDonald's,200,Debit
+2025-04-18,Uber,207,Debit
+2025-04-18,Zomato,743,Debit
+2025-04-19,Uber Eats,610,Debit
+2025-04-19,Zomato,672,Debit
+2025-04-20,BookMyShow,684,Debit
+2025-04-20,IRCTC,908,Debit
+2025-04-20,Starbucks,300,Debit
+2025-04-20,Swiggy,632,Debit
+2025-04-20,Zomato,595,Debit
+2025-04-21,Domino's,553,Debit
+2025-04-21,Petrol Pump,1671,Debit
+2025-04-21,Starbucks,364,Debit
+2025-04-22,Amazon,4368,Debit
+2025-04-22,Domino's,652,Debit
+2025-04-22,Ola,250,Debit
+2025-04-22,Swiggy,709,Debit
+2025-04-23,Myntra,1496,Debit
+2025-04-23,Uber Eats,746,Debit
+2025-04-24,Rapido,50,Debit
+2025-04-24,Rapido,154,Debit
+2025-04-24,Uber Eats,360,Debit
+2025-04-25,Flipkart,3620,Debit
+2025-04-25,Ola,132,Debit
+2025-04-25,Rapido,146,Debit
+2025-04-25,Uber Eats,354,Debit
+2025-04-26,BookMyShow,1094,Debit
+2025-04-26,Starbucks,318,Debit
+2025-04-27,Domino's,467,Debit
+2025-04-27,Flipkart,3169,Debit
+2025-04-27,Uber Eats,746,Debit
+2025-04-28,Zomato,298,Debit
+2025-04-29,Domino's,900,Debit
+2025-04-29,Rapido,107,Debit
+2025-04-29,Starbucks,283,Debit
+2025-04-30,Rapido,41,Debit
+2025-04-30,Rapido,123,Debit
+2025-04-30,Uber,437,Debit
+2025-05-01,BigBasket,2167,Debit
+2025-05-01,McDonald's,334,Debit
+2025-05-01,Salary,50000,Credit
+2025-05-01,Uber,275,Debit
+2025-05-01,Uber,604,Debit
+2025-05-01,Zomato,415,Debit
+2025-05-02,McDonald's,412,Debit
+2025-05-02,Rapido,178,Debit
+2025-05-03,BookMyShow,956,Debit
+2025-05-03,Swiggy,681,Debit
+2025-05-04,Domino's,451,Debit
+2025-05-05,Domino's,544,Debit
+2025-05-05,Netflix,649,Debit
+2025-05-06,Spotify,119,Debit
+2025-05-06,Uber,522,Debit
+2025-05-06,Zomato,857,Debit
+2025-05-07,Hotstar,299,Debit
+2025-05-07,Rapido,93,Debit
+2025-05-08,Airtel,999,Debit
+2025-05-08,Uber,186,Debit
+2025-05-08,Zomato,810,Debit
+2025-05-09,Jio,599,Debit
+2025-05-09,Pharmacy,249,Debit
+2025-05-09,Swiggy,314,Debit
+2025-05-09,Uber,421,Debit
+2025-05-10,ATM Withdrawal,2314,Debit
+2025-05-10,Uber Eats,285,Debit
+2025-05-11,Ajio,2234,Debit
+2025-05-11,BookMyShow,952,Debit
+2025-05-11,Google Play,276,Debit
+2025-05-11,Rapido,47,Debit
+2025-05-11,Uber Eats,753,Debit
+2025-05-12,Electricity,2516,Debit
+2025-05-12,Ola,429,Debit
+2025-05-12,Rapido,180,Debit
+2025-05-12,Swiggy,509,Debit
+2025-05-13,Domino's,814,Debit
+2025-05-13,Rapido,69,Debit
+2025-05-14,Ajio,2317,Debit
+2025-05-15,McDonald's,384,Debit
+2025-05-15,Ola,270,Debit
+2025-05-15,Petrol Pump,637,Debit
+2025-05-15,Rapido,105,Debit
+2025-05-16,Amazon,2999,Debit
+2025-05-16,Ola,525,Debit
+2025-05-16,Swiggy,275,Debit
+2025-05-17,BookMyShow,841,Debit
+2025-05-17,McDonald's,206,Debit
+2025-05-18,Swiggy,538,Debit
+2025-05-20,Myntra,1864,Debit
+2025-05-20,Rapido,108,Debit
+2025-05-20,Uber Eats,246,Debit
+2025-05-21,Google Play,320,Debit
+2025-05-21,Uber,499,Debit
+2025-05-21,Zomato,346,Debit
+2025-05-22,McDonald's,412,Debit
+2025-05-22,Rapido,123,Debit
+2025-05-23,Ajio,1493,Debit
+2025-05-23,Rapido,60,Debit
+2025-05-23,Swiggy,339,Debit
+2025-05-24,BookMyShow,475,Debit
+2025-05-24,Domino's,790,Debit
+2025-05-24,Rapido,164,Debit
+2025-05-24,Starbucks,278,Debit
+2025-05-25,BookMyShow,382,Debit
+2025-05-25,Domino's,566,Debit
+2025-05-25,Uber,123,Debit
+2025-05-25,Zomato,461,Debit
+2025-05-26,Ola,146,Debit
+2025-05-27,McDonald's,219,Debit
+2025-05-28,Ola,197,Debit
+2025-05-28,Uber,614,Debit
+2025-05-29,Amazon,2292,Debit
+2025-05-30,Swiggy,585,Debit
+2025-05-31,Starbucks,319,Debit
+2025-05-31,Uber Eats,336,Debit
+2025-06-01,Google Play,301,Debit
+2025-06-01,Salary,55000,Credit
+2025-06-01,Zomato,377,Debit
+2025-06-01,Zomato,462,Debit
+2025-06-02,Rapido,122,Debit
+2025-06-02,Starbucks,449,Debit
+2025-06-03,Amazon,2841,Debit
+2025-06-03,Ola,412,Debit
+2025-06-03,Swiggy,660,Debit
+2025-06-04,Domino's,643,Debit
+2025-06-04,Uber,434,Debit
+2025-06-05,Netflix,649,Debit
+2025-06-05,Rapido,88,Debit
+2025-06-05,Uber Eats,262,Debit
+2025-06-06,Flipkart,559,Debit
+2025-06-06,Ola,475,Debit
+2025-06-06,Spotify,119,Debit
+2025-06-06,Swiggy,641,Debit
+2025-06-07,BookMyShow,1043,Debit
+2025-06-07,Hotstar,299,Debit
+2025-06-07,Starbucks,301,Debit
+2025-06-08,Airtel,599,Debit
+2025-06-08,BookMyShow,991,Debit
+2025-06-08,Uber,405,Debit
+2025-06-08,Uber Eats,562,Debit
+2025-06-09,Jio,399,Debit
+2025-06-09,Rapido,76,Debit
+2025-06-09,Uber,418,Debit
+2025-06-10,Uber,278,Debit
+2025-06-10,Uber Eats,621,Debit
+2025-06-11,Zomato,886,Debit
+2025-06-12,Electricity,2606,Debit
+2025-06-12,Myntra,1337,Debit
+2025-06-12,Rapido,132,Debit
+2025-06-13,BESCOM,1884,Debit
+2025-06-13,McDonald's,278,Debit
+2025-06-13,Uber,271,Debit
+2025-06-13,Uber,379,Debit
+2025-06-14,Domino's,484,Debit
+2025-06-14,Flipkart,3236,Debit
+2025-06-15,Ajio,1749,Debit
+2025-06-15,BSNL,499,Debit
+2025-06-15,BookMyShow,1016,Debit
+2025-06-15,McDonald's,366,Debit
+2025-06-16,Zomato,516,Debit
+2025-06-17,Ola,367,Debit
+2025-06-17,Uber Eats,671,Debit
+2025-06-18,Myntra,812,Debit
+2025-06-19,Ola,152,Debit
+2025-06-19,Rapido,71,Debit
+2025-06-20,Uber,538,Debit
+2025-06-21,BookMyShow,351,Debit
+2025-06-21,Starbucks,411,Debit
+2025-06-21,Zomato,595,Debit
+2025-06-22,Cashback,53,Credit
+2025-06-22,Ola,466,Debit
+2025-06-22,Zomato,239,Debit
+2025-06-23,Rapido,175,Debit
+2025-06-23,Swiggy,199,Debit
+2025-06-24,Ajio,1721,Debit
+2025-06-24,Rapido,157,Debit
+2025-06-24,Swiggy,228,Debit
+2025-06-25,DMart,1385,Debit
+2025-06-25,Starbucks,343,Debit
+2025-06-26,Ola,144,Debit
+2025-06-26,Zomato,880,Debit
+2025-06-27,Ola,132,Debit
+2025-06-27,Rapido,139,Debit
+2025-06-28,Domino's,596,Debit
+2025-06-29,Starbucks,393,Debit
+2025-06-29,Uber Eats,399,Debit
+2025-06-30,BigBasket,439,Debit
+2025-06-30,Zomato,264,Debit
+2025-07-01,Salary,50000,Credit
+2025-07-02,Starbucks,462,Debit
+2025-07-02,Uber,266,Debit
+2025-07-03,Ola,333,Debit
+2025-07-03,Ola,490,Debit
+2025-07-04,Rapido,108,Debit
+2025-07-04,Zomato,708,Debit
+2025-07-05,BookMyShow,706,Debit
+2025-07-05,Netflix,649,Debit
+2025-07-05,Uber,160,Debit
+2025-07-05,Zomato,758,Debit
+2025-07-06,BookMyShow,1060,Debit
+2025-07-06,Domino's,807,Debit
+2025-07-06,Ola,424,Debit
+2025-07-06,Spotify,119,Debit
+2025-07-07,ATM Withdrawal,4089,Debit
+2025-07-07,Hotstar,299,Debit
+2025-07-07,Rapido,80,Debit
+2025-07-07,Uber Eats,635,Debit
+2025-07-08,Airtel,999,Debit
+2025-07-08,Swiggy,421,Debit
+2025-07-09,Jio,399,Debit
+2025-07-09,Ola,337,Debit
+2025-07-09,Starbucks,298,Debit
+2025-07-10,McDonald's,340,Debit
+2025-07-10,Prime,1499,Debit
+2025-07-10,Rapido,87,Debit
+2025-07-10,Uber,133,Debit
+2025-07-11,Domino's,616,Debit
+2025-07-11,Myntra,2610,Debit
+2025-07-12,Electricity,2096,Debit
+2025-07-12,Swiggy,507,Debit
+2025-07-12,Zomato,655,Debit
+2025-07-13,Ajio,552,Debit
+2025-07-13,BookMyShow,836,Debit
+2025-07-13,Domino's,870,Debit
+2025-07-13,Uber,525,Debit
+2025-07-13,Uber Eats,398,Debit
+2025-07-14,Uber,153,Debit
+2025-07-15,Myntra,902,Debit
+2025-07-15,Rapido,58,Debit
+2025-07-16,Domino's,481,Debit
+2025-07-17,Flipkart,1062,Debit
+2025-07-17,Uber,385,Debit
+2025-07-17,Zomato,643,Debit
+2025-07-18,Flipkart,3000,Debit
+2025-07-18,Ola,543,Debit
+2025-07-18,Refund,769,Credit
+2025-07-19,Flipkart,1100,Debit
+2025-07-19,Starbucks,267,Debit
+2025-07-20,Amazon,2467,Debit
+2025-07-20,Starbucks,241,Debit
+2025-07-21,Ola,438,Debit
+2025-07-21,Uber Eats,251,Debit
+2025-07-22,Ajio,1350,Debit
+2025-07-22,Uber,472,Debit
+2025-07-23,DMart,834,Debit
+2025-07-23,Rapido,128,Debit
+2025-07-23,Starbucks,293,Debit
+2025-07-24,McDonald's,242,Debit
+2025-07-24,Ola,306,Debit
+2025-07-24,Uber,145,Debit
+2025-07-26,BookMyShow,652,Debit
+2025-07-26,Starbucks,459,Debit
+2025-07-26,Zomato,710,Debit
+2025-07-27,Domino's,399,Debit
+2025-07-27,Ola,415,Debit
+2025-07-28,Ola,501,Debit
+2025-07-28,Pharmacy,703,Debit
+2025-07-28,Swiggy,621,Debit
+2025-07-29,Domino's,916,Debit
+2025-07-29,Ola,501,Debit
+2025-07-30,Ola,395,Debit
+2025-07-30,Ola,516,Debit
+2025-07-30,Starbucks,280,Debit
+2025-07-31,Ola,521,Debit
+2025-07-31,Starbucks,425,Debit
+2025-07-31,Uber,485,Debit
+2025-08-01,Salary,50000,Credit
+2025-08-01,Starbucks,291,Debit
+2025-08-01,Uber,321,Debit
+2025-08-02,Myntra,1047,Debit
+2025-08-02,Starbucks,470,Debit
+2025-08-02,Uber Eats,526,Debit
+2025-08-03,BookMyShow,741,Debit
+2025-08-03,Flipkart,3353,Debit
+2025-08-03,Google Play,418,Debit
+2025-08-03,Uber Eats,247,Debit
+2025-08-04,Amazon,1861,Debit
+2025-08-04,DMart,2115,Debit
+2025-08-04,McDonald's,255,Debit
+2025-08-05,Netflix,649,Debit
+2025-08-05,Ola,556,Debit
+2025-08-05,Uber Eats,428,Debit
+2025-08-06,Rapido,162,Debit
+2025-08-06,Spotify,119,Debit
+2025-08-07,Hotstar,299,Debit
+2025-08-07,Rapido,107,Debit
+2025-08-07,Starbucks,395,Debit
+2025-08-08,Airtel,599,Debit
+2025-08-08,Ola,504,Debit
+2025-08-08,Starbucks,372,Debit
+2025-08-09,Domino's,923,Debit
+2025-08-09,Jio,399,Debit
+2025-08-09,Rapido,179,Debit
+2025-08-09,Uber Eats,500,Debit
+2025-08-10,Ajio,1842,Debit
+2025-08-10,BookMyShow,740,Debit
+2025-08-10,Ola,475,Debit
+2025-08-11,ATM Withdrawal,2348,Debit
+2025-08-11,Flipkart,1392,Debit
+2025-08-11,Ola,180,Debit
+2025-08-12,ATM Withdrawal,1793,Debit
+2025-08-12,Electricity,1609,Debit
+2025-08-12,Swiggy,282,Debit
+2025-08-12,Uber,468,Debit
+2025-08-13,BESCOM,1694,Debit
+2025-08-13,McDonald's,424,Debit
+2025-08-13,Ola,274,Debit
+2025-08-13,Pharmacy,787,Debit
+2025-08-14,Flipkart,547,Debit
+2025-08-14,Starbucks,239,Debit
+2025-08-15,McDonald's,275,Debit
+2025-08-16,Starbucks,274,Debit
+2025-08-17,Amazon,3007,Debit
+2025-08-17,BookMyShow,719,Debit
+2025-08-17,Zomato,716,Debit
+2025-08-18,Ola,400,Debit
+2025-08-19,Google Play,97,Debit
+2025-08-19,Uber Eats,635,Debit
+2025-08-20,IRCTC,2356,Debit
+2025-08-20,Ola,306,Debit
+2025-08-20,Uber,348,Debit
+2025-08-20,Zomato,688,Debit
+2025-08-21,Uber,151,Debit
+2025-08-21,Uber Eats,231,Debit
+2025-08-22,Uber Eats,734,Debit
+2025-08-23,BookMyShow,1015,Debit
+2025-08-23,Domino's,726,Debit
+2025-08-23,Flipkart,2357,Debit
+2025-08-24,McDonald's,455,Debit
+2025-08-25,ATM Withdrawal,4640,Debit
+2025-08-25,Swiggy,718,Debit
+2025-08-25,Uber,589,Debit
+2025-08-26,Ola,169,Debit
+2025-08-26,Starbucks,296,Debit
+2025-08-27,Starbucks,448,Debit
+2025-08-28,Rapido,45,Debit
+2025-08-28,Swiggy,752,Debit
+2025-08-29,Ola,468,Debit
+2025-08-29,Uber,397,Debit
+2025-08-30,Swiggy,473,Debit
+2025-08-31,BookMyShow,949,Debit
+2025-08-31,McDonald's,409,Debit
+2025-09-01,Salary,48000,Credit
+2025-09-01,Uber,211,Debit
+2025-09-02,Zomato,203,Debit
+2025-09-03,BigBasket,2142,Debit
+2025-09-03,Uber,246,Debit
+2025-09-04,Ola,424,Debit
+2025-09-05,Ajio,978,Debit
+2025-09-05,Netflix,649,Debit
+2025-09-05,Rapido,52,Debit
+2025-09-05,Uber,499,Debit
+2025-09-05,Zomato,268,Debit
+2025-09-06,BookMyShow,1147,Debit
+2025-09-06,Google Play,315,Debit
+2025-09-06,Myntra,1912,Debit
+2025-09-06,Spotify,119,Debit
+2025-09-06,Zomato,715,Debit
+2025-09-07,Hotstar,299,Debit
+2025-09-07,Starbucks,309,Debit
+2025-09-07,Swiggy,750,Debit
+2025-09-08,Airtel,799,Debit
+2025-09-08,Ola,466,Debit
+2025-09-08,Petrol Pump,876,Debit
+2025-09-09,Jio,399,Debit
+2025-09-09,Ola,549,Debit
+2025-09-10,Flipkart,1443,Debit
+2025-09-10,Rapido,175,Debit
+2025-09-11,Amazon,895,Debit
+2025-09-11,McDonald's,369,Debit
+2025-09-11,Uber,146,Debit
+2025-09-12,Electricity,2636,Debit
+2025-09-13,BookMyShow,1022,Debit
+2025-09-13,Swiggy,396,Debit
+2025-09-14,Zomato,606,Debit
+2025-09-15,Ajio,2058,Debit
+2025-09-15,BSNL,499,Debit
+2025-09-15,Domino's,665,Debit
+2025-09-15,Ola,348,Debit
+2025-09-16,ATM Withdrawal,3920,Debit
+2025-09-16,Rapido,96,Debit
+2025-09-17,Uber,375,Debit
+2025-09-17,Zomato,537,Debit
+2025-09-18,McDonald's,508,Debit
+2025-09-19,Rapido,55,Debit
+2025-09-19,Zomato,759,Debit
+2025-09-20,BigBasket,1385,Debit
+2025-09-20,BookMyShow,974,Debit
+2025-09-20,Swiggy,186,Debit
+2025-09-21,Google Play,394,Debit
+2025-09-21,Myntra,2793,Debit
+2025-09-21,Rapido,145,Debit
+2025-09-21,Uber Eats,714,Debit
+2025-09-21,Uber Eats,719,Debit
+2025-09-22,Cashback,185,Credit
+2025-09-22,Zomato,309,Debit
+2025-09-23,Domino's,712,Debit
+2025-09-23,Ola,317,Debit
+2025-09-24,Domino's,432,Debit
+2025-09-24,Uber,167,Debit
+2025-09-25,Ajio,1819,Debit
+2025-09-25,Uber Eats,229,Debit
+2025-09-26,Ajio,1054,Debit
+2025-09-26,Pharmacy,820,Debit
+2025-09-26,Swiggy,720,Debit
+2025-09-27,Myntra,663,Debit
+2025-09-28,McDonald's,219,Debit
+2025-09-28,Rapido,101,Debit
+2025-09-29,Google Play,226,Debit
+2025-09-29,McDonald's,251,Debit
+2025-09-30,McDonald's,298,Debit
+2025-10-01,Ajio,1503,Debit
+2025-10-01,Salary,48000,Credit
+2025-10-01,Uber,444,Debit
+2025-10-02,McDonald's,401,Debit
+2025-10-02,Ola,153,Debit
+2025-10-03,Rapido,79,Debit
+2025-10-03,Swiggy,264,Debit
+2025-10-04,Domino's,626,Debit
+2025-10-04,Domino's,805,Debit
+2025-10-04,Uber,215,Debit
+2025-10-05,Ajio,1293,Debit
+2025-10-05,Netflix,649,Debit
+2025-10-05,Starbucks,267,Debit
+2025-10-05,Starbucks,386,Debit
+2025-10-06,BigBasket,1240,Debit
+2025-10-06,Myntra,2618,Debit
+2025-10-06,Spotify,119,Debit
+2025-10-06,Uber,191,Debit
+2025-10-06,Zomato,785,Debit
+2025-10-07,Domino's,845,Debit
+2025-10-07,Hotstar,299,Debit
+2025-10-08,Airtel,999,Debit
+2025-10-08,Amazon,3540,Debit
+2025-10-08,Ola,164,Debit
+2025-10-09,Domino's,800,Debit
+2025-10-09,Jio,399,Debit
+2025-10-09,Rapido,74,Debit
+2025-10-10,McDonald's,340,Debit
+2025-10-10,Ola,259,Debit
+2025-10-10,Prime,1499,Debit
+2025-10-11,BookMyShow,827,Debit
+2025-10-11,Ola,528,Debit
+2025-10-12,Electricity,2498,Debit
+2025-10-12,Starbucks,233,Debit
+2025-10-13,BESCOM,1727,Debit
+2025-10-13,Uber Eats,290,Debit
+2025-10-14,ATM Withdrawal,4425,Debit
+2025-10-14,Rapido,148,Debit
+2025-10-14,Uber Eats,530,Debit
+2025-10-15,Starbucks,479,Debit
+2025-10-16,Domino's,899,Debit
+2025-10-16,Myntra,1280,Debit
+2025-10-16,Uber,513,Debit
+2025-10-17,Uber Eats,629,Debit
+2025-10-18,BookMyShow,633,Debit
+2025-10-18,Uber Eats,751,Debit
+2025-10-18,Zomato,722,Debit
+2025-10-19,Ajio,2384,Debit
+2025-10-19,Google Play,121,Debit
+2025-10-19,Starbucks,297,Debit
+2025-10-19,Uber,367,Debit
+2025-10-20,Domino's,816,Debit
+2025-10-21,Myntra,1046,Debit
+2025-10-21,Rapido,69,Debit
+2025-10-21,Uber Eats,683,Debit
+2025-10-22,Ola,396,Debit
+2025-10-22,Uber Eats,469,Debit
+2025-10-23,Ola,124,Debit
+2025-10-23,Rapido,150,Debit
+2025-10-24,McDonald's,379,Debit
+2025-10-24,Ola,495,Debit
+2025-10-24,Rapido,56,Debit
+2025-10-25,Swiggy,448,Debit
+2025-10-25,Zomato,668,Debit
+2025-10-26,Domino's,818,Debit
+2025-10-26,Swiggy,536,Debit
+2025-10-27,Ajio,1355,Debit
+2025-10-27,Ola,465,Debit
+2025-10-27,Swiggy,317,Debit
+2025-10-27,Uber,213,Debit
+2025-10-28,McDonald's,275,Debit
+2025-10-28,Rapido,84,Debit
+2025-10-29,Ajio,1649,Debit
+2025-10-29,Domino's,811,Debit
+2025-10-29,Uber,368,Debit
+2025-10-30,Amazon,2105,Debit
+2025-10-30,Ola,195,Debit
+2025-10-30,Uber Eats,723,Debit
+2025-10-31,Pharmacy,394,Debit
+2025-10-31,Rapido,166,Debit
+2025-10-31,Starbucks,367,Debit
+2025-11-01,Ajio,1617,Debit
+2025-11-01,BookMyShow,685,Debit
+2025-11-01,Domino's,905,Debit
+2025-11-01,Google Play,433,Debit
+2025-11-01,Salary,55000,Credit
+2025-11-02,BookMyShow,1081,Debit
+2025-11-02,Swiggy,640,Debit
+2025-11-02,Uber,344,Debit
+2025-11-03,Flipkart,3613,Debit
+2025-11-03,Rapido,149,Debit
+2025-11-04,Rapido,83,Debit
+2025-11-04,Swiggy,763,Debit
+2025-11-05,Domino's,876,Debit
+2025-11-05,Netflix,649,Debit
+2025-11-05,Petrol Pump,2381,Debit
+2025-11-06,Domino's,479,Debit
+2025-11-06,Flipkart,3312,Debit
+2025-11-06,Spotify,119,Debit
+2025-11-07,Hotstar,299,Debit
+2025-11-07,Ola,431,Debit
+2025-11-07,Uber Eats,622,Debit
+2025-11-08,Airtel,599,Debit
+2025-11-08,Myntra,2461,Debit
+2025-11-08,Swiggy,592,Debit
+2025-11-09,Jio,599,Debit
+2025-11-09,Uber Eats,315,Debit
+2025-11-10,Myntra,1982,Debit
+2025-11-10,Starbucks,423,Debit
+2025-11-10,Uber,373,Debit
+2025-11-11,Google Play,450,Debit
+2025-11-11,McDonald's,355,Debit
+2025-11-12,Electricity,2000,Debit
+2025-11-12,Uber,345,Debit
+2025-11-13,Uber Eats,355,Debit
+2025-11-14,Uber,310,Debit
+2025-11-15,Amazon,307,Debit
+2025-11-15,BigBasket,1413,Debit
+2025-11-15,BookMyShow,329,Debit
+2025-11-15,Uber Eats,459,Debit
+2025-11-16,BookMyShow,341,Debit
+2025-11-16,Swiggy,612,Debit
+2025-11-16,Uber Eats,571,Debit
+2025-11-17,Domino's,726,Debit
+2025-11-17,Flipkart,3026,Debit
+2025-11-18,Ola,479,Debit
+2025-11-18,Refund,1487,Credit
+2025-11-18,Starbucks,224,Debit
+2025-11-18,Uber,441,Debit
+2025-11-19,McDonald's,291,Debit
+2025-11-19,Rapido,138,Debit
+2025-11-19,Uber,421,Debit
+2025-11-20,Uber,403,Debit
+2025-11-21,Uber Eats,247,Debit
+2025-11-22,Uber,521,Debit
+2025-11-22,Uber Eats,621,Debit
+2025-11-23,Starbucks,256,Debit
+2025-11-24,Amazon,411,Debit
+2025-11-24,Ola,504,Debit
+2025-11-24,Starbucks,435,Debit
+2025-11-25,Rapido,146,Debit
+2025-11-25,Swiggy,587,Debit
+2025-11-26,DMart,2000,Debit
+2025-11-26,Rapido,92,Debit
+2025-11-26,Starbucks,298,Debit
+2025-11-27,Ajio,736,Debit
+2025-11-27,Uber,149,Debit
+2025-11-27,Uber Eats,287,Debit
+2025-11-28,Domino's,529,Debit
+2025-11-28,Myntra,2741,Debit
+2025-11-28,Rapido,42,Debit
+2025-11-29,Amazon,3043,Debit
+2025-11-29,Domino's,479,Debit
+2025-11-29,Uber Eats,495,Debit
+2025-11-30,BookMyShow,1129,Debit
+2025-11-30,Starbucks,259,Debit
+2025-12-01,Domino's,455,Debit
+2025-12-01,Google Play,309,Debit
+2025-12-01,Salary,52000,Credit
+2025-12-02,Swiggy,430,Debit
+2025-12-02,Uber,211,Debit
+2025-12-03,Myntra,1088,Debit
+2025-12-03,Ola,532,Debit
+2025-12-03,Rapido,121,Debit
+2025-12-03,Uber Eats,649,Debit
+2025-12-04,Uber,608,Debit
+2025-12-05,Netflix,649,Debit
+2025-12-05,Petrol Pump,516,Debit
+2025-12-06,Domino's,598,Debit
+2025-12-06,McDonald's,368,Debit
+2025-12-06,Spotify,119,Debit
+2025-12-07,BookMyShow,604,Debit
+2025-12-07,Hotstar,299,Debit
+2025-12-07,Uber,597,Debit
+2025-12-08,Airtel,999,Debit
+2025-12-08,Flipkart,2118,Debit
+2025-12-08,Rapido,118,Debit
+2025-12-08,Swiggy,523,Debit
+2025-12-09,Jio,239,Debit
+2025-12-09,Rapido,145,Debit
+2025-12-09,Zomato,486,Debit
+2025-12-10,Google Play,115,Debit
+2025-12-10,Ola,148,Debit
+2025-12-10,Uber,446,Debit
+2025-12-11,Domino's,672,Debit
+2025-12-12,Electricity,1542,Debit
+2025-12-12,McDonald's,319,Debit
+2025-12-12,Pharmacy,288,Debit
+2025-12-12,Uber,519,Debit
+2025-12-13,BESCOM,1646,Debit
+2025-12-13,Domino's,562,Debit
+2025-12-13,Google Play,204,Debit
+2025-12-13,Swiggy,728,Debit
+2025-12-14,BookMyShow,504,Debit
+2025-12-14,Swiggy,400,Debit
+2025-12-15,BSNL,499,Debit
+2025-12-15,Swiggy,486,Debit
+2025-12-15,Uber,607,Debit
+2025-12-16,Flipkart,934,Debit
+2025-12-16,Uber,182,Debit
+2025-12-17,Uber,131,Debit
+2025-12-17,Uber Eats,306,Debit
+2025-12-18,Zomato,294,Debit
+2025-12-19,McDonald's,205,Debit
+2025-12-19,Rapido,141,Debit
+2025-12-20,BookMyShow,671,Debit
+2025-12-20,Domino's,806,Debit
+2025-12-20,Flipkart,3050,Debit
+2025-12-20,IRCTC,1733,Debit
+2025-12-20,Zomato,481,Debit
+2025-12-21,BookMyShow,1071,Debit
+2025-12-21,McDonald's,250,Debit
+2025-12-21,McDonald's,282,Debit
+2025-12-22,McDonald's,363,Debit
+2025-12-22,Ola,577,Debit
+2025-12-23,Ola,139,Debit
+2025-12-23,Ola,381,Debit
+2025-12-23,Swiggy,506,Debit
+2025-12-24,Rapido,54,Debit
+2025-12-24,Uber,414,Debit
+2025-12-24,Zomato,302,Debit
+2025-12-25,Google Play,229,Debit
+2025-12-25,Rapido,131,Debit
+2025-12-25,Zomato,380,Debit
+2025-12-26,Uber,548,Debit
+2025-12-27,BookMyShow,1189,Debit
+2025-12-27,McDonald's,199,Debit
+2025-12-27,Swiggy,237,Debit
+2025-12-27,Uber,130,Debit
+2025-12-28,Rapido,76,Debit
+2025-12-28,Swiggy,202,Debit
+2025-12-28,Zomato,531,Debit
+2025-12-29,BigBasket,1849,Debit
+2025-12-29,Myntra,1920,Debit
+2025-12-29,Ola,410,Debit
+2025-12-31,Starbucks,402,Debit
+2025-12-31,Uber,313,Debit
