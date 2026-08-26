@@ -129,7 +129,7 @@ export function AnalyzerDashboard() {
     setPeriod("all");
     setCategory("all");
     if (!file) {
-      setError("Choose a CSV file first.");
+      setError("Choose a CSV or Excel (.xlsx) file first.");
       return;
     }
     const body = new FormData();
@@ -218,12 +218,12 @@ export function AnalyzerDashboard() {
                 onSubmit={onAnalyze}
               >
                 <div className="grid min-w-0 flex-1 gap-2">
-                  <Label htmlFor="csv">Statement CSV</Label>
+                  <Label htmlFor="statement">Statement file</Label>
                   <input
                     ref={inputRef}
-                    id="csv"
+                    id="statement"
                     type="file"
-                    accept=".csv,text/csv"
+                    accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     className="hidden"
                     onChange={(e) => setFile(e.target.files?.[0] ?? null)}
                   />
@@ -251,7 +251,8 @@ export function AnalyzerDashboard() {
                 </Button>
               </form>
               <p className="mt-2 text-xs text-muted-foreground">
-                Columns: date, merchant, amount, type (Credit / Debit)
+                CSV or Excel (.xlsx). Columns: date, merchant, amount, type
+                (Credit / Debit)
               </p>
               {error ? (
                 <Alert variant="destructive" className="mt-4">
@@ -271,6 +272,10 @@ export function AnalyzerDashboard() {
                   Upload{" "}
                   <span className="font-mono text-xs">
                     sample_data/transactions.csv
+                  </span>{" "}
+                  or{" "}
+                  <span className="font-mono text-xs">
+                    sample_data/transactions.xlsx
                   </span>{" "}
                   to populate the dashboard and unlock chat.
                 </p>

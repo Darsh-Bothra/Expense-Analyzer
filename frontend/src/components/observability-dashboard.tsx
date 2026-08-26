@@ -102,7 +102,7 @@ export function ObservabilityDashboard() {
           Per-step latency and LLM token/cost for recent{" "}
           <span className="font-mono text-xs">POST /analyze</span> and{" "}
           <span className="font-mono text-xs">POST /chat</span> calls. Timings are
-          persisted in SQLite and survive restarts. Upload a CSV on the{" "}
+          persisted in SQLite and survive restarts. Upload a CSV or Excel file on the{" "}
           <Link href="/" className="underline underline-offset-4">
             Analyzer
           </Link>{" "}

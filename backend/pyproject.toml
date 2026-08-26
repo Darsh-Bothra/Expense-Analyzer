@@ -1,12 +1,13 @@
 [project]
 name = "expense-analyzer"
 version = "0.1.0"
-description = "UPI expense analyzer: CSV analytics plus grounded LLM JSON insights"
+description = "UPI expense analyzer: CSV/XLSX analytics plus grounded LLM JSON insights"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.115.0",
   "uvicorn[standard]>=0.32.0",
   "pandas>=2.2.0",
+  "openpyxl>=3.1.0",
   "pydantic>=2.9.0",
   "python-multipart>=0.0.12",
   "python-dotenv>=1.0.1",

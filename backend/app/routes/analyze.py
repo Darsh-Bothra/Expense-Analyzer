@@ -10,7 +10,7 @@ from app.llm.insights import generate_insights
 from app.observability import StepTimer, record_run
 from app.pipeline.analytics import build_facts
 from app.pipeline.categorize import add_categories
-from app.pipeline.parser import ParseError, parse_csv
+from app.pipeline.parser import ParseError, parse_upload
 from app.schemas import AnalyzeResponse, TransactionRow
 
 router = APIRouter()
@@ -48,8 +48,9 @@ async def analyze(request: Request, file: UploadFile = File(...)):
             detail=f"Rate limit exceeded. Max {RATE_LIMIT_MAX_REQUESTS} uploads per {RATE_LIMIT_WINDOW_S}s from one IP.",
         )
     timer = StepTimer()
-    if not file.filename or not file.filename.lower().endswith(".csv"):
-        raise HTTPException(status_code=400, detail="Please upload a .csv file.")
+    name = (file.filename or "").lower()
+    if not name.endswith((".csv", ".xlsx")):
+        raise HTTPException(status_code=400, detail="Please upload a .csv or .xlsx file.")
     with timer.step("read_file"):
         content = await file.read()
     if len(content) > MAX_FILE_BYTES:
@@ -67,8 +68,8 @@ async def analyze(request: Request, file: UploadFile = File(...)):
             detail=f"File too large. Limit is {MAX_FILE_BYTES} bytes.",
         )
     try:
-        with timer.step("parse_csv"):
-            df = parse_csv(content)
+        with timer.step("parse"):
+            df = parse_upload(content, file.filename or name)
     except ParseError as exc:
         record_run(
             timer,

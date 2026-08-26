@@ -1,12 +1,12 @@
 # Expense Analyzer — project context
 
-UPI-style spending insights: users upload a transaction CSV, the app computes totals and breakdowns in code, then a small LLM writes a grounded JSON summary. Built as an assignment-style web app (BHIM / GPay / PhonePe / Paytm problem: people transact a lot but rarely review spend).
+UPI-style spending insights: users upload a transaction CSV or Excel (.xlsx), the app computes totals and breakdowns in code, then a small LLM writes a grounded JSON summary. Built as an assignment-style web app (BHIM / GPay / PhonePe / Paytm problem: people transact a lot but rarely review spend).
 
 ## What we are building
 
 A web app that:
 
-1. Accepts a CSV (`date,merchant,amount,type` with Credit/Debit).
+1. Accepts a CSV or Excel `.xlsx` (`date,merchant,amount,type` with Credit/Debit; Excel: first sheet).
 2. Parses and shows uploaded rows.
 3. Computes basic analytics: total income, total expense, net savings, transaction count.
 4. Merchant analysis: top merchants, most frequent, highest spend.
@@ -37,7 +37,7 @@ Analytics definitions (UI and LLM must agree):
 | Layer | Choice |
 | --- | --- |
 | API | FastAPI (`POST /analyze`, `GET /health`, `GET /observability`) |
-| Data | pandas |
+| Data | pandas (+ openpyxl for `.xlsx`) |
 | LLM | LangChain `init_chat_model("{LLM_PROVIDER}:{LLM_MODEL}")` |
 | Default model | OpenAI `gpt-4o-mini` |
 | Output | Pydantic `InsightSummary` JSON |
@@ -52,6 +52,7 @@ No database, auth, agents, RAG, or vector store.
 CONTEXT.md
 README.md
 sample_data/transactions.csv
+sample_data/transactions.xlsx
 backend/
   pyproject.toml
   .env.example
@@ -59,7 +60,7 @@ backend/
     main.py              FastAPI app + CORS + router registration
     schemas/             Pydantic models (FactsPayload, InsightSummary, ...)
     db/                  SQLite persistence
-    pipeline/            CSV parse, merchant categories, KPI analytics
+    pipeline/            CSV/XLSX parse, merchant categories, KPI analytics
       parser.py
       categorize.py
       analytics.py
@@ -85,8 +86,8 @@ frontend/
 ## Endpoints
 
 - `GET /health` → `{ "ok": true }`
-- `POST /analyze` multipart field `file` (`.csv`) → `{ rows, facts, insights, insights_source }`
-- `GET /observability` → in-memory step timings for the last 50 `/analyze` calls (`avg_ms`, `max_ms`, `bottleneck`, `recent`). Steps: `read_file`, `parse_csv`, `categorize`, `analytics`, `insights`, `serialize_rows`.
+- `POST /analyze` multipart field `file` (`.csv` or `.xlsx`) → `{ rows, facts, insights, insights_source }`
+- `GET /observability` → in-memory step timings for the last 50 `/analyze` calls (`avg_ms`, `max_ms`, `bottleneck`, `recent`). Steps: `read_file`, `parse`, `categorize`, `analytics`, `insights`, `serialize_rows`.
 
 Frontend (port 5173) rewrites `/api/backend/analyze`, `/api/backend/health`, and `/api/backend/observability` to FastAPI on port 8000. Observability is `/observability` in the same app. Restarting uvicorn clears in-memory timings.
 
