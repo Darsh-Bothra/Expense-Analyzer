@@ -1,6 +1,6 @@
 import pandas as pd
 
-from app.categorize import add_categories
+from app.pipeline.categorize import add_categories
 
 
 def test_add_categories_maps_known():

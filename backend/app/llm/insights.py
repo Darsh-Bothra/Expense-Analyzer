@@ -2,19 +2,10 @@ import os
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
-from app.llm import get_chat_model, provider_api_key_present
+from app.llm.client import get_chat_model, provider_api_key_present
 from app.observability import estimate_cost, extract_usage
+from app.prompts.insights import INSIGHTS_SYSTEM_PROMPT
 from app.schemas import FactsPayload, InsightSummary
-
-SYSTEM_PROMPT = """You are an expense-summary writer for an Indian UPI app.
-Output only the structured fields requested.
-Use ONLY the numbers and merchant names in the facts JSON.
-Never invent merchants, amounts, or percentages.
-Speak to the user in clear INR language (₹).
-headline: one sentence.
-highlights: 3 to 5 bullets; each bullet must cite a number from the facts.
-watchouts: 0 to 2 optional flags (category imbalance, high frequency, weekend skew).
-"""
 
 
 def _inr(value: float) -> str:
@@ -114,7 +105,7 @@ def generate_insights(facts: FactsPayload) -> tuple[InsightSummary, str, int, in
         model = get_chat_model().with_structured_output(InsightSummary)
         result = model.invoke(
             [
-                SystemMessage(content=SYSTEM_PROMPT),
+                SystemMessage(content=INSIGHTS_SYSTEM_PROMPT),
                 HumanMessage(content=f"Facts JSON:\n{facts.model_dump_json()}"),
             ]
         )

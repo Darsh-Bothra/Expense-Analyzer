@@ -7,12 +7,34 @@ See [CONTEXT.md](CONTEXT.md) for architecture, schemas, and how the hybrid pipel
 ## Layout
 
 ```
-backend/app/        FastAPI: parse, analytics, categories, LangChain insights
-frontend/           Next.js + shadcn UI (port 5173)
-  /                 Analyzer
-  /observability    Latency + token/cost dashboard
-sample_data/        Example CSV
-docker-compose.yml One-command run (backend + frontend + healthcheck)
+backend/
+  app/
+    main.py                 FastAPI app + CORS + router registration
+    schemas/                Pydantic request/response models
+    db/                     SQLite persistence
+    pipeline/               CSV parse, merchant categories, KPI analytics
+      parser.py
+      categorize.py
+      analytics.py
+    llm/                    model factory, insights, chat agent, tools
+      client.py
+      insights.py
+      chat.py
+      tools.py
+    observability/          step timing + token/cost tracking
+    prompts/                LLM system prompts (separate from runtime logic)
+      insights.py
+      chat.py
+    routes/                 HTTP route handlers (one router per concern)
+      health.py             GET /health
+      observability.py      GET /observability
+      analyze.py            POST /analyze (+ rate limiter + guardrails)
+      datasets.py           GET /datasets/{id}, POST .../chat, GET .../messages
+frontend/                   Next.js + shadcn UI (port 5173)
+  /                         Analyzer
+  /observability            Latency + token/cost dashboard
+sample_data/                Example CSV
+docker-compose.yml          One-command run (backend + frontend + healthcheck)
 ```
 
 ## Run

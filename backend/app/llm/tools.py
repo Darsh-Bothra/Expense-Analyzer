@@ -5,7 +5,7 @@ import pandas as pd
 from langchain_core.tools import StructuredTool
 from pydantic import BaseModel, Field
 
-from app.analytics import EXPENSE_CATEGORIES, build_facts
+from app.pipeline.analytics import EXPENSE_CATEGORIES, build_facts
 from app.db import load_transactions_df
 
 VALID_CATEGORIES = (*EXPENSE_CATEGORIES, "Income")

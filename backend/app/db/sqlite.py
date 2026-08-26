@@ -8,7 +8,8 @@ import pandas as pd
 
 from app.schemas import FactsPayload, InsightSummary, TransactionRow
 
-DB_PATH = Path(__file__).resolve().parents[1] / "data" / "app.db"
+# backend/data/app.db  (this file lives in backend/app/db/)
+DB_PATH = Path(__file__).resolve().parents[2] / "data" / "app.db"
 
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS datasets (

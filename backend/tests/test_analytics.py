@@ -1,7 +1,7 @@
 import pandas as pd
 
-from app.analytics import build_facts
-from app.categorize import categorize_merchant
+from app.pipeline.analytics import build_facts
+from app.pipeline.categorize import categorize_merchant
 
 
 def _df(rows):

@@ -3,11 +3,11 @@ import json
 import pandas as pd
 import pytest
 
-from app.analytics import build_facts
-from app.categorize import add_categories
 from app.db import persist_dataset
-from app.insights import template_insights
-from app.tools import _apply_filters, make_tools
+from app.llm.insights import template_insights
+from app.llm.tools import _apply_filters, make_tools
+from app.pipeline.analytics import build_facts
+from app.pipeline.categorize import add_categories
 
 
 def _seed_dataset(rows) -> str:

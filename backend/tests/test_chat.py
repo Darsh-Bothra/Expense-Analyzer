@@ -1,10 +1,10 @@
 import pandas as pd
 
-from app.analytics import build_facts
-from app.categorize import add_categories
-from app.chat import run_chat, template_chat_reply
 from app.db import persist_dataset
-from app.insights import template_insights
+from app.llm.chat import run_chat, template_chat_reply
+from app.llm.insights import template_insights
+from app.pipeline.analytics import build_facts
+from app.pipeline.categorize import add_categories
 
 
 def _seed_dataset(rows) -> str:

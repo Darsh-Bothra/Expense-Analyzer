@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from app.parser import ParseError, parse_csv
+from app.pipeline.parser import ParseError, parse_csv
 
 
 def test_parse_csv_basic():

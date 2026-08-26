@@ -14,7 +14,7 @@ os.environ["NPCI_TEST_DB_PATH"] = str(Path(_TMP_DIR) / "test.db")
 def isolated_db(monkeypatch, tmp_path):
     """Each test gets a fresh SQLite database."""
     db_path = tmp_path / "app.db"
-    monkeypatch.setattr("app.db.DB_PATH", db_path)
+    monkeypatch.setattr("app.db.sqlite.DB_PATH", db_path)
     # Re-init the schema for this fresh path.
     from app.db import init_db
 
@@ -45,5 +45,9 @@ def no_llm_key(monkeypatch):
     monkeypatch.delenv("GOOGLE_API_KEY", raising=False)
     monkeypatch.setenv("LLM_PROVIDER", "openai")
     monkeypatch.setenv("LLM_MODEL", "gpt-4o-mini")
-    with mock.patch("app.llm.provider_api_key_present", return_value=False):
+    with (
+        mock.patch("app.llm.client.provider_api_key_present", return_value=False),
+        mock.patch("app.llm.chat.provider_api_key_present", return_value=False),
+        mock.patch("app.llm.insights.provider_api_key_present", return_value=False),
+    ):
         yield

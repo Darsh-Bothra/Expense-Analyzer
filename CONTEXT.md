@@ -21,7 +21,7 @@ UI is a dark Next.js + shadcn dashboard (analyzer + observability).
 - **LLM last, and only as a narrator.** It never sees raw rows. It receives ~20 aggregated facts and must not invent merchants, amounts, or percentages.
 - **Structured output.** LangChain `with_structured_output(InsightSummary)` so the UI does not parse free prose.
 - **Template fallback.** If `OPENAI_API_KEY` (or the current provider key) is missing or the call fails, the **same JSON schema** is filled from templates. `insights_source` is `"llm"` or `"template"`.
-- **No LLM categorization.** Merchant → category is a dictionary in `backend/app/categorize.py`.
+- **No LLM categorization.** Merchant → category is a dictionary in `backend/app/pipeline/categorize.py`.
 
 Analytics definitions (UI and LLM must agree):
 
@@ -56,13 +56,27 @@ backend/
   pyproject.toml
   .env.example
   app/
-    main.py          POST /analyze
-    parser.py        CSV schema
-    analytics.py     KPIs, merchants, weekend split
-    categorize.py    merchant dictionary
-    llm.py           init_chat_model factory
-    insights.py      facts → LLM JSON or template JSON
-    schemas.py       FactsPayload, InsightSummary
+    main.py              FastAPI app + CORS + router registration
+    schemas/             Pydantic models (FactsPayload, InsightSummary, ...)
+    db/                  SQLite persistence
+    pipeline/            CSV parse, merchant categories, KPI analytics
+      parser.py
+      categorize.py
+      analytics.py
+    llm/                 model factory, insights, chat agent, tools
+      client.py
+      insights.py
+      chat.py
+      tools.py
+    observability/       step timing + token/cost tracking
+    prompts/             LLM system prompts (separate from runtime logic)
+      insights.py
+      chat.py
+    routes/              HTTP route handlers (one router per concern)
+      health.py          GET /health
+      observability.py   GET /observability
+      analyze.py         POST /analyze (+ rate limiter + guardrails)
+      datasets.py        GET /datasets/{id}, POST .../chat, GET .../messages
 frontend/
   src/app/page.tsx                 analyzer
   src/app/observability/page.tsx   latency dashboard

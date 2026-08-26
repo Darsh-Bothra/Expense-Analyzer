@@ -3,24 +3,14 @@ import os
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, ToolMessage
 
 from app.db import append_chat_message, get_dataset_meta, list_chat_messages, load_transactions_df
-from app.llm import get_chat_model, provider_api_key_present
+from app.llm.client import get_chat_model, provider_api_key_present
 from app.observability import estimate_cost, extract_usage
+from app.prompts.chat import CHAT_SYSTEM_PROMPT, STOP_TOOL_CALLS_MESSAGE
 from app.schemas import FactsPayload, ToolCallTrace
-from app.tools import make_tools
+from app.llm.tools import make_tools
 
 MAX_TOOL_ROUNDS = 3
 HISTORY_TURNS = 10
-
-SYSTEM_PROMPT = """You are an expense analyst for an Indian UPI statement.
-Columns: date (YYYY-MM-DD), merchant, amount, type (Credit or Debit), category.
-Categories: Food, Travel, Shopping, Bills, Entertainment, Others, Income.
-Income = sum of Credit amounts. Expense = sum of Debit amounts. Net savings = Income − Expense.
-Category % is debit in that category divided by total expense.
-
-You MUST call tools to obtain numbers. Never invent merchants, amounts, or percentages.
-If a tool returns an error, fix the arguments and retry.
-If a tool returns empty results, say the statement has no matching rows.
-Answer in clear INR (₹). Be concise. Use only figures from tool JSON."""
 
 
 def template_chat_reply(facts: FactsPayload) -> str:
@@ -69,7 +59,7 @@ def _system_prompt(dataset_id: str) -> str:
             f"This statement covers {start} to {end} ({len(df)} rows). "
             "When the user says this year/month without dates, use this span, not today's calendar."
         )
-    return f"{SYSTEM_PROMPT}\n{span}"
+    return f"{CHAT_SYSTEM_PROMPT}\n{span}"
 
 
 def run_chat(dataset_id: str, user_message: str) -> tuple[str, list[ToolCallTrace], str, int, int, float]:
@@ -136,7 +126,7 @@ def run_chat(dataset_id: str, user_message: str) -> tuple[str, list[ToolCallTrac
                     [
                         *messages,
                         HumanMessage(
-                            content="Stop calling tools. Answer the user using only the tool JSON already in this conversation."
+                            content=STOP_TOOL_CALLS_MESSAGE
                         ),
                     ]
                 )
