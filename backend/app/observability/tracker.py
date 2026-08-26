@@ -12,7 +12,7 @@ from app.db import insert_run, list_recent_runs
 MAX_RUNS = 50
 STEP_ORDER = (
     "read_file",
-    "parse_csv",
+    "parse",
     "categorize",
     "analytics",
     "insights",

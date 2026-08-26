@@ -1,7 +1,15 @@
+from io import BytesIO
+
 import pandas as pd
 import pytest
 
-from app.pipeline.parser import ParseError, parse_csv
+from app.pipeline.parser import ParseError, parse_csv, parse_upload, parse_xlsx
+
+
+def _xlsx_bytes(df: pd.DataFrame) -> bytes:
+    buf = BytesIO()
+    df.to_excel(buf, index=False, engine="openpyxl")
+    return buf.getvalue()
 
 
 def test_parse_csv_basic():
@@ -45,3 +53,42 @@ def test_parse_csv_empty_after_validation():
 def test_parse_csv_unreadable():
     with pytest.raises(ParseError, match="Could not read CSV"):
         parse_csv(b"\xff\xfe\x00\x01binary garbage")
+
+
+def test_parse_xlsx_matches_csv():
+    csv = b"date,merchant,amount,type\n2025-01-01,Swiggy,450,Debit\n2025-01-04,Salary,50000,Credit\n"
+    csv_df = parse_csv(csv)
+    xlsx = _xlsx_bytes(
+        pd.DataFrame(
+            {
+                "date": ["2025-01-01", "2025-01-04"],
+                "merchant": ["Swiggy", "Salary"],
+                "amount": [450, 50000],
+                "type": ["Debit", "Credit"],
+            }
+        )
+    )
+    xlsx_df = parse_xlsx(xlsx)
+    assert len(xlsx_df) == 2
+    pd.testing.assert_frame_equal(csv_df.reset_index(drop=True), xlsx_df.reset_index(drop=True))
+
+
+def test_parse_xlsx_missing_columns():
+    content = _xlsx_bytes(
+        pd.DataFrame({"date": ["2025-01-01"], "merchant": ["Swiggy"], "amount": [450]})
+    )
+    with pytest.raises(ParseError, match="Missing columns"):
+        parse_xlsx(content)
+
+
+def test_parse_xlsx_unreadable():
+    with pytest.raises(ParseError, match="Could not read Excel"):
+        parse_xlsx(b"not an excel workbook")
+
+
+def test_parse_upload_routes_by_extension():
+    csv = b"date,merchant,amount,type\n2025-01-01,Swiggy,450,Debit\n"
+    df = parse_upload(csv, "statement.CSV")
+    assert len(df) == 1
+    with pytest.raises(ParseError, match="csv or .xlsx"):
+        parse_upload(csv, "statement.xls")

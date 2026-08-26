@@ -44,6 +44,45 @@ def test_analyze_rejects_non_csv(client):
         files={"file": ("data.txt", b"foo", "text/plain")},
     )
     assert res.status_code == 400
+    assert "csv or .xlsx" in res.json()["detail"]
+
+
+def test_analyze_rejects_xls(client):
+    res = client.post(
+        "/analyze",
+        files={"file": ("data.xls", b"foo", "application/vnd.ms-excel")},
+    )
+    assert res.status_code == 400
+
+
+def test_analyze_xlsx_success(client):
+    from io import BytesIO
+
+    import pandas as pd
+
+    buf = BytesIO()
+    pd.DataFrame(
+        {
+            "date": ["2025-01-01", "2025-01-02", "2025-01-04"],
+            "merchant": ["Swiggy", "Uber", "Salary"],
+            "amount": [450, 280, 50000],
+            "type": ["Debit", "Debit", "Credit"],
+        }
+    ).to_excel(buf, index=False, engine="openpyxl")
+    res = client.post(
+        "/analyze",
+        files={
+            "file": (
+                "transactions.xlsx",
+                buf.getvalue(),
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+        },
+    )
+    assert res.status_code == 200
+    body = res.json()
+    assert len(body["rows"]) == 3
+    assert body["facts"]["income"] == 50000.0
 
 
 def test_analyze_rejects_bad_columns(client):

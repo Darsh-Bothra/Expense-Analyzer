@@ -148,7 +148,7 @@ export function ExpenseChat({
         <div className="space-y-3 p-4">
           {!ready ? (
             <p className="text-sm text-muted-foreground">
-              Upload a CSV on the left to chat about merchants, categories, and
+              Upload a CSV or Excel file on the left to chat about merchants, categories, and
               spend.
             </p>
           ) : loadingHistory ? (

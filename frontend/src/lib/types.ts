@@ -70,7 +70,7 @@ export type ObservabilitySnapshot = {
 
 export const ANALYZE_STEPS = [
   "read_file",
-  "parse_csv",
+  "parse",
   "categorize",
   "analytics",
   "insights",

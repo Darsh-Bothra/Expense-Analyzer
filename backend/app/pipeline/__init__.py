@@ -1,1 +1,1 @@
-"""CSV parse, merchant categories, and KPI analytics."""
+"""CSV/XLSX parse, merchant categories, and KPI analytics."""

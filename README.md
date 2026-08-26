@@ -1,6 +1,6 @@
 # Expense Analyzer
 
-Upload a UPI-style transaction CSV, get spend totals, merchant and category breakdowns, then a grounded JSON summary from a small LLM (or a template if no API key).
+Upload a UPI-style transaction CSV or Excel (.xlsx), get spend totals, merchant and category breakdowns, then a grounded JSON summary from a small LLM (or a template if no API key).
 
 See [CONTEXT.md](CONTEXT.md) for architecture, schemas, and how the hybrid pipeline works.
 
@@ -12,7 +12,7 @@ backend/
     main.py                 FastAPI app + CORS + router registration
     schemas/                Pydantic request/response models
     db/                     SQLite persistence
-    pipeline/               CSV parse, merchant categories, KPI analytics
+    pipeline/               CSV/XLSX parse, merchant categories, KPI analytics
       parser.py
       categorize.py
       analytics.py
@@ -33,7 +33,7 @@ backend/
 frontend/                   Next.js + shadcn UI (port 5173)
   /                         Analyzer
   /observability            Latency + token/cost dashboard
-sample_data/                Example CSV
+sample_data/                Example CSV and XLSX
 docker-compose.yml          One-command run (backend + frontend + healthcheck)
 ```
 
@@ -74,7 +74,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173 and upload `sample_data/transactions.csv`.
+Open http://localhost:5173 and upload `sample_data/transactions.csv` or `sample_data/transactions.xlsx`.
 
 Observability lives in the same app at http://localhost:5173/observability. It
 polls `GET /observability` every 2s via a Next.js rewrite to port 8000. Analyze
@@ -110,7 +110,7 @@ Configurable via environment variables (backend):
 
 | Variable | Default | Meaning |
 | --- | --- | --- |
-| `ANALYZE_MAX_FILE_BYTES` | `5242880` (5 MB) | Max uploaded CSV size |
+| `ANALYZE_MAX_FILE_BYTES` | `5242880` (5 MB) | Max uploaded CSV/XLSX size |
 | `ANALYZE_MAX_ROWS` | `100000` | Max rows after parsing |
 | `ANALYZE_RATE_LIMIT` | `20` | Max `/analyze` uploads per 60s per IP |
 
@@ -136,4 +136,4 @@ OPENAI_API_KEY=your_key
 
 Examples: `groq` + `llama-3.1-8b-instant` + `GROQ_API_KEY`, or `google_genai` + `gemini-2.0-flash` + `GOOGLE_API_KEY` (install the matching `langchain-*` package if needed).
 
-CSV columns: `date,merchant,amount,type` with `Credit` / `Debit`.
+CSV or Excel columns: `date,merchant,amount,type` with `Credit` / `Debit`. Excel uses the first worksheet.
