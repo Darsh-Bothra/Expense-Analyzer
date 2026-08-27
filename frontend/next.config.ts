@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
       { source: "/api/backend/analyze", 
         destination: `${API}/analyze` 
       },
+      {
+        source: "/api/backend/inspect-workbook",
+        destination: `${API}/inspect-workbook`,
+      },
       { source: "/api/backend/health", 
         destination: `${API}/health` 
       },

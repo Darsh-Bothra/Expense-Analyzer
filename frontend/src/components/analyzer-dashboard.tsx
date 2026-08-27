@@ -57,7 +57,7 @@ import {
   uniqueCategories,
 } from "@/lib/aggregate";
 import { apiError, inr } from "@/lib/format";
-import type { AnalyzeResponse, DatasetResponse } from "@/lib/types";
+import type { AnalyzeResponse, DatasetResponse, WorkbookInspect } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const TX_INITIAL = 10;
@@ -75,6 +75,10 @@ export function AnalyzerDashboard() {
   const [savedDatasetId, setSavedDatasetId] = useState<string | null>(null);
   const [restoring, setRestoring] = useState(false);
   const [txLimit, setTxLimit] = useState(TX_INITIAL);
+  const [sheets, setSheets] = useState<string[]>([]);
+  const [sheet, setSheet] = useState("");
+  const [workbookFormat, setWorkbookFormat] = useState<string | null>(null);
+  const [inspecting, setInspecting] = useState(false);
 
   useEffect(() => {
     const id = window.localStorage.getItem(DATASET_STORAGE_KEY);
@@ -122,6 +126,40 @@ export function AnalyzerDashboard() {
     }
   }
 
+  async function onFileChosen(picked: File | null) {
+    setFile(picked);
+    setSheets([]);
+    setSheet("");
+    setWorkbookFormat(null);
+    if (!picked) return;
+    if (!picked.name.toLowerCase().endsWith(".xlsx")) {
+      setWorkbookFormat("csv");
+      return;
+    }
+    setInspecting(true);
+    setError("");
+    try {
+      const body = new FormData();
+      body.append("file", picked);
+      const res = await fetch("/api/backend/inspect-workbook", {
+        method: "POST",
+        body,
+      });
+      const payload = await res.json();
+      if (!res.ok) {
+        throw new Error(apiError(payload, "Could not read workbook sheets"));
+      }
+      const inspected = payload as WorkbookInspect;
+      setSheets(inspected.sheets);
+      setWorkbookFormat(inspected.format);
+      setSheet(inspected.suggested_sheet ?? inspected.sheets[0] ?? "");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not read workbook sheets");
+    } finally {
+      setInspecting(false);
+    }
+  }
+
   async function onAnalyze(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -134,6 +172,7 @@ export function AnalyzerDashboard() {
     }
     const body = new FormData();
     body.append("file", file);
+    if (sheet) body.append("sheet", sheet);
     setLoading(true);
     try {
       const res = await fetch("/api/backend/analyze", { method: "POST", body });
@@ -225,7 +264,7 @@ export function AnalyzerDashboard() {
                     type="file"
                     accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                     className="hidden"
-                    onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+                    onChange={(e) => onFileChosen(e.target.files?.[0] ?? null)}
                   />
                   <Button
                     type="button"
@@ -239,11 +278,32 @@ export function AnalyzerDashboard() {
                     </span>
                   </Button>
                 </div>
-                <Button type="submit" disabled={loading} className="sm:w-32">
-                  {loading ? (
+                {sheets.length > 0 ? (
+                  <div className="grid min-w-0 sm:w-56 gap-2">
+                    <Label htmlFor="sheet">Worksheet</Label>
+                    <Select value={sheet} onValueChange={setSheet}>
+                      <SelectTrigger id="sheet" className="w-full">
+                        <SelectValue placeholder="Choose sheet" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {sheets.map((name) => (
+                          <SelectItem key={name} value={name}>
+                            {name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                ) : null}
+                <Button
+                  type="submit"
+                  disabled={loading || inspecting}
+                  className="sm:w-32"
+                >
+                  {loading || inspecting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Analyzing
+                      {inspecting ? "Reading" : "Analyzing"}
                     </>
                   ) : (
                     "Analyze"
@@ -251,8 +311,9 @@ export function AnalyzerDashboard() {
                 </Button>
               </form>
               <p className="mt-2 text-xs text-muted-foreground">
-                CSV or Excel (.xlsx). Columns: date, merchant, amount, type
-                (Credit / Debit)
+                {workbookFormat === "paytm"
+                  ? "Paytm workbook detected. Pick Passbook Payment History, not Summary."
+                  : "CSV or Excel (.xlsx). Generic sheets need date, merchant, amount, type (Credit / Debit). For Paytm, pick Passbook Payment History, not Summary."}
               </p>
               {error ? (
                 <Alert variant="destructive" className="mt-4">
@@ -275,9 +336,10 @@ export function AnalyzerDashboard() {
                   </span>{" "}
                   or{" "}
                   <span className="font-mono text-xs">
-                    sample_data/transactions.xlsx
+                    sample_data/paytm_passbook_sample.xlsx
                   </span>{" "}
-                  to populate the dashboard and unlock chat.
+                  (choose Passbook Payment History) to populate the dashboard and unlock
+                  chat.
                 </p>
                 {savedDatasetId ? (
                   <Button

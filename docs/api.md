@@ -9,15 +9,30 @@ Interactive docs: http://localhost:8000/docs
 | Method | Path | Purpose |
 | --- | --- | --- |
 | `GET` | `/health` | `{ "ok": true }` |
+| `POST` | `/inspect-workbook` | List Excel sheets; suggest Paytm passbook if present |
 | `POST` | `/analyze` | Upload CSV/XLSX; return rows, facts, insights, `dataset_id` |
 | `GET` | `/observability` | Last 50 analyze/chat runs (latency, tokens, cost) |
 | `GET` | `/datasets/{id}` | Reload a persisted upload |
 | `POST` | `/datasets/{id}/chat` | Ask a question about that dataset |
 | `GET` | `/datasets/{id}/messages` | Chat history for that dataset |
 
+## `POST /inspect-workbook`
+
+Multipart field `file` (`.csv` or `.xlsx`). Same size limit as `/analyze`. Not rate-limited.
+
+```json
+{
+  "sheets": ["Summary", "Passbook Payment History"],
+  "suggested_sheet": "Passbook Payment History",
+  "format": "paytm"
+}
+```
+
+`format` is `"csv"`, `"paytm"`, or `"generic"`. CSV returns empty `sheets` and `suggested_sheet: null`.
+
 ## `POST /analyze`
 
-Multipart field `file` (`.csv` or `.xlsx`).
+Multipart field `file` (`.csv` or `.xlsx`) and optional form field `sheet` (Excel worksheet name). Generic sheets need columns `date`, `merchant`, `amount`, `type`. Paytm passbook sheets map `Date` + `Transaction Details` + signed `Amount`. Pick **Passbook Payment History**, not **Summary**.
 
 Success body (`AnalyzeResponse`):
 
@@ -90,6 +105,7 @@ See [observability.md](observability.md).
 Rewrites in `frontend/next.config.ts`:
 
 - `/api/backend/analyze` → `/analyze`
+- `/api/backend/inspect-workbook` → `/inspect-workbook`
 - `/api/backend/health` → `/health`
 - `/api/backend/observability` → `/observability`
 - `/api/backend/datasets/:path*` → `/datasets/:path*`

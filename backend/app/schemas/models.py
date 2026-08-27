@@ -57,6 +57,12 @@ class AnalyzeResponse(BaseModel):
     dataset_id: str | None = None
 
 
+class WorkbookInspect(BaseModel):
+    sheets: list[str]
+    suggested_sheet: str | None = None
+    format: str
+
+
 class DatasetResponse(BaseModel):
     dataset_id: str
     filename: str

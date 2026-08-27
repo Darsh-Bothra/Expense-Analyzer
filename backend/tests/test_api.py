@@ -85,6 +85,61 @@ def test_analyze_xlsx_success(client):
     assert body["facts"]["income"] == 50000.0
 
 
+def test_inspect_workbook_paytm(client, paytm_workbook_bytes):
+    res = client.post(
+        "/inspect-workbook",
+        files={
+            "file": (
+                "Paytm_UPI_Statement.xlsx",
+                paytm_workbook_bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+        },
+    )
+    assert res.status_code == 200
+    body = res.json()
+    assert body["format"] == "paytm"
+    assert body["suggested_sheet"] == "Passbook Payment History"
+    assert body["sheets"] == ["Summary", "Passbook Payment History"]
+
+
+def test_analyze_paytm_passbook(client, paytm_workbook_bytes):
+    res = client.post(
+        "/analyze",
+        files={
+            "file": (
+                "Paytm_UPI_Statement.xlsx",
+                paytm_workbook_bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+        },
+        data={"sheet": "Passbook Payment History"},
+    )
+    assert res.status_code == 200
+    body = res.json()
+    assert len(body["rows"]) == 4
+    assert body["facts"]["income"] == 1500.0
+    merchants = {row["merchant"] for row in body["rows"]}
+    assert "Apollo Pharmacy" in merchants
+    assert "Google Play Store" in merchants
+
+
+def test_analyze_paytm_summary_rejected(client, paytm_workbook_bytes):
+    res = client.post(
+        "/analyze",
+        files={
+            "file": (
+                "Paytm_UPI_Statement.xlsx",
+                paytm_workbook_bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+        },
+        data={"sheet": "Summary"},
+    )
+    assert res.status_code == 400
+    assert "Passbook" in res.json()["detail"]
+
+
 def test_analyze_rejects_bad_columns(client):
     res = client.post(
         "/analyze",
