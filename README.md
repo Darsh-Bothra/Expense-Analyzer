@@ -1,57 +1,51 @@
 # Expense Analyzer
 
-Upload a UPI-style transaction CSV or Excel (.xlsx), get spend totals, merchant and category breakdowns, then a grounded JSON summary from a small LLM (or a template if no API key).
+Upload a UPI-style transaction CSV or Excel (`.xlsx`), get spend totals plus merchant and category breakdowns, then a grounded JSON summary from a small LLM (or a template if no API key). After upload, ask questions about that statement in chat; the model calls typed analytics tools instead of inventing numbers.
 
-See [CONTEXT.md](CONTEXT.md) for architecture, schemas, and how the hybrid pipeline works.
+## Docs
+
+| File | Contents |
+| --- | --- |
+| [docs/architecture.md](docs/architecture.md) | Hybrid pipeline, analytics definitions, layout, LLM switch |
+| [docs/api.md](docs/api.md) | HTTP endpoints, request/response shapes, `/analyze` guardrails |
+| [docs/chat.md](docs/chat.md) | Persisted datasets, tool-calling agent, template fallback |
+| [docs/observability.md](docs/observability.md) | Step latency, tokens, estimated cost |
 
 ## Layout
 
 ```
-backend/
-  app/
-    main.py                 FastAPI app + CORS + router registration
-    schemas/                Pydantic request/response models
-    db/                     SQLite persistence
-    pipeline/               CSV/XLSX parse, merchant categories, KPI analytics
-      parser.py
-      categorize.py
-      analytics.py
-    llm/                    model factory, insights, chat agent, tools
-      client.py
-      insights.py
-      chat.py
-      tools.py
-    observability/          step timing + token/cost tracking
-    prompts/                LLM system prompts (separate from runtime logic)
-      insights.py
-      chat.py
-    routes/                 HTTP route handlers (one router per concern)
-      health.py             GET /health
-      observability.py      GET /observability
-      analyze.py            POST /analyze (+ rate limiter + guardrails)
-      datasets.py           GET /datasets/{id}, POST .../chat, GET .../messages
-frontend/                   Next.js + shadcn UI (port 5173)
-  /                         Analyzer
-  /observability            Latency + token/cost dashboard
-sample_data/                Example CSV and XLSX
-docker-compose.yml          One-command run (backend + frontend + healthcheck)
+backend/app/
+  main.py                 FastAPI app + CORS + router registration
+  schemas/                Pydantic request/response models
+  db/                     SQLite (datasets, rows, chat, run timings)
+  pipeline/               CSV/XLSX parse, merchant categories, KPI analytics
+  llm/                    model factory, insights, chat agent, tools
+  observability/          step timing + token/cost tracking
+  prompts/                LLM system prompts
+  routes/                 health, observability, analyze, datasets/chat
+frontend/                 Next.js + shadcn UI (port 5173)
+  /                       Analyzer + chat
+  /observability          Latency + token/cost dashboard
+observability-ui/         Compatibility stub (dashboard lives in frontend)
+sample_data/              Example CSV and XLSX
+docker-compose.yml        Backend + frontend with healthchecks
+docs/                     Architecture and API notes
 ```
 
 ## Run
 
-### Option A — Docker Compose (one command)
+### Option A — Docker Compose
 
 ```bash
 docker compose up --build
 ```
 
-Backend on http://localhost:8000, frontend on http://localhost:5173.
-The backend container has a `/health` healthcheck; the frontend waits for it
-(`depends_on: condition: service_healthy`). SQLite is persisted in a named
-volume (`backend-data`) so observability timings and datasets survive restarts.
+Backend: http://localhost:8000  
+Frontend: http://localhost:5173
 
-Set an LLM key via env before bringing the stack up (optional — without it,
-insights and chat fall back to the template):
+The backend container has a `/health` healthcheck; the frontend waits until it is healthy. SQLite is stored in the `backend-data` volume so datasets, chat history, and observability timings survive restarts.
+
+Optional LLM key (without it, insights and chat use the template fallback):
 
 ```bash
 OPENAI_API_KEY=sk-... docker compose up --build
@@ -74,55 +68,34 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173 and upload `sample_data/transactions.csv` or `sample_data/transactions.xlsx`.
+Open http://localhost:5173 and upload `sample_data/transactions.csv`, `sample_data/transactions.xlsx`, or `sample_data/transactions_1000.csv`.
 
-Observability lives in the same app at http://localhost:5173/observability. It
-polls `GET /observability` every 2s via a Next.js rewrite to port 8000. Analyze
-still goes 5173 → 8000 only.
+Observability is in the same app at http://localhost:5173/observability. Next.js rewrites `/api/backend/*` to FastAPI on port 8000.
 
-Without `OPENAI_API_KEY`, insights still appear (`insights_source: template`).
+Without an API key, insights still appear (`insights_source: template`) and chat returns a KPI summary (`source: template`).
 
 ## Tests
 
-Backend (pytest), from `backend/`:
+Backend, from `backend/`:
 
 ```bash
-uv sync                 # installs the dev dependency group (pytest, httpx)
+uv sync
 uv run pytest
 ```
 
-Frontend (vitest + React Testing Library), from `frontend/`:
+Frontend, from `frontend/`:
 
 ```bash
-npm install             # installs vitest + @testing-library/react
-npm test               # one-shot
-npm run test:watch     # watch mode
+npm install
+npm test
+npm run test:watch
 ```
 
-Backend tests cover the parser, analytics, categorization, agent tools, the
-chat template fallback, and the `/analyze` + `/observability` endpoints.
-Frontend tests cover the pure aggregation utilities in
-`frontend/src/lib/aggregate.ts`.
+Backend tests cover the parser, analytics, categorization, agent tools, chat template fallback, and `/analyze` + `/observability`. Frontend tests cover aggregation helpers in `frontend/src/lib/aggregate.ts`.
 
-## `/analyze` guardrails
+## File format
 
-Configurable via environment variables (backend):
-
-| Variable | Default | Meaning |
-| --- | --- | --- |
-| `ANALYZE_MAX_FILE_BYTES` | `5242880` (5 MB) | Max uploaded CSV/XLSX size |
-| `ANALYZE_MAX_ROWS` | `100000` | Max rows after parsing |
-| `ANALYZE_RATE_LIMIT` | `20` | Max `/analyze` uploads per 60s per IP |
-
-Oversized files and over-limit row counts return `413`; rate-limited requests
-return `429`.
-
-## Observability
-
-`GET /observability` returns per-step latency averages/maxes, the bottleneck
-step, and LLM token (`tokens_in`/`tokens_out`) and estimated `cost_usd` totals
-for the last 50 `/analyze` and `/chat` runs. Timings are persisted in SQLite
-(`backend/data/app.db`) and survive uvicorn restarts.
+Columns: `date,merchant,amount,type` with `Credit` / `Debit`. Excel uses the first worksheet only (`.xlsx`, not legacy `.xls`).
 
 ## Switch LLM (no code change)
 
@@ -134,6 +107,4 @@ LLM_MODEL=gpt-4o-mini
 OPENAI_API_KEY=your_key
 ```
 
-Examples: `groq` + `llama-3.1-8b-instant` + `GROQ_API_KEY`, or `google_genai` + `gemini-2.0-flash` + `GOOGLE_API_KEY` (install the matching `langchain-*` package if needed).
-
-CSV or Excel columns: `date,merchant,amount,type` with `Credit` / `Debit`. Excel uses the first worksheet.
+Examples: `groq` + `llama-3.1-8b-instant` + `GROQ_API_KEY`, or `google_genai` + `gemini-2.0-flash` + `GOOGLE_API_KEY` (install the matching `langchain-*` package if needed). See [docs/architecture.md](docs/architecture.md).

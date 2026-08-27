@@ -7,6 +7,6 @@ npm install
 npm run dev
 ```
 
-Opens http://localhost:5173 — Analyzer at `/`, observability at `/observability`.
+Opens http://localhost:5173 — Analyzer and chat at `/`, observability at `/observability`.
 
-The API is proxied through `/api/backend/*` to FastAPI on port 8000. See the repo [README](../README.md).
+The API is proxied through `/api/backend/*` to FastAPI on port 8000. See the repo [README](../README.md) and [docs/api.md](../docs/api.md).
