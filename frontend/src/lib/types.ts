@@ -19,6 +19,12 @@ export type AnalyzeResponse = {
   dataset_id?: string | null;
 };
 
+export type WorkbookInspect = {
+  sheets: string[];
+  suggested_sheet: string | null;
+  format: "csv" | "paytm" | "generic" | string;
+};
+
 export type DatasetResponse = AnalyzeResponse & {
   dataset_id: string;
   filename: string;

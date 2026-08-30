@@ -37,6 +37,55 @@ def sample_csv_bytes() -> bytes:
     return "\n".join(rows).encode()
 
 
+def make_paytm_workbook_bytes() -> bytes:
+    """Synthetic Paytm export: Summary + Passbook Payment History (fake counterparties)."""
+    from io import BytesIO
+
+    import pandas as pd
+
+    buf = BytesIO()
+    with pd.ExcelWriter(buf, engine="openpyxl") as writer:
+        pd.DataFrame(
+            [
+                ["Sample User"],
+                ["paytm-sample@example.com"],
+                ["Paytm Statement for :", "01 AUG'26 - 25 AUG'26"],
+                ["Money Paid (Amount in Rs.)", "-3,293.89"],
+            ]
+        ).to_excel(writer, sheet_name="Summary", header=False, index=False)
+        pd.DataFrame(
+            {
+                "Date": ["25/08/2026", "24/08/2026", "01/08/2026", "19/08/2026"],
+                "Time": ["19:11:57", "12:42:15", "10:00:00", "23:06:10"],
+                "Transaction Details": [
+                    "Paid to Apollo Pharmacy",
+                    "Money sent to Test Person",
+                    "Received from Acme Corp",
+                    "Automatic payment for Google Play Store",
+                ],
+                "Other Transaction Details (UPI ID or A/c No)": [
+                    "merchant@upi",
+                    "9999999999@upi",
+                    "acme@upi",
+                    "playstore@upi",
+                ],
+                "Your Account": ["State Bank Of India - 00"] * 4,
+                "Amount": ["-393.89", "-2,400.00", "+1,500.00", "-299.00"],
+                "UPI Ref No.": [111, 222, 333, 444],
+                "Order ID": [None] * 4,
+                "Remarks": [None] * 4,
+                "Tags": ["#🏥 Medical", "#💵 Money Transfer", "#💵 Money Received", "#🎈 Entertainment"],
+                "Comment": [None] * 4,
+            }
+        ).to_excel(writer, sheet_name="Passbook Payment History", index=False)
+    return buf.getvalue()
+
+
+@pytest.fixture
+def paytm_workbook_bytes() -> bytes:
+    return make_paytm_workbook_bytes()
+
+
 @pytest.fixture
 def no_llm_key(monkeypatch):
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)

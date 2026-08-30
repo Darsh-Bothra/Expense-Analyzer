@@ -3,7 +3,7 @@ from io import BytesIO
 import pandas as pd
 import pytest
 
-from app.pipeline.parser import ParseError, parse_csv, parse_upload, parse_xlsx
+from app.pipeline.parser import ParseError, inspect_upload, parse_csv, parse_upload, parse_xlsx
 
 
 def _xlsx_bytes(df: pd.DataFrame) -> bytes:
@@ -92,3 +92,39 @@ def test_parse_upload_routes_by_extension():
     assert len(df) == 1
     with pytest.raises(ParseError, match="csv or .xlsx"):
         parse_upload(csv, "statement.xls")
+
+
+def test_inspect_csv_has_no_sheets():
+    info = inspect_upload(b"date,merchant,amount,type\n2025-01-01,Swiggy,450,Debit\n", "t.csv")
+    assert info == {"sheets": [], "suggested_sheet": None, "format": "csv"}
+
+
+def test_inspect_paytm_suggests_passbook(paytm_workbook_bytes):
+    info = inspect_upload(paytm_workbook_bytes, "Paytm_UPI_Statement.xlsx")
+    assert info["format"] == "paytm"
+    assert info["sheets"] == ["Summary", "Passbook Payment History"]
+    assert info["suggested_sheet"] == "Passbook Payment History"
+
+
+def test_parse_xlsx_paytm_first_sheet_is_summary(paytm_workbook_bytes):
+    with pytest.raises(ParseError, match="Passbook Payment History"):
+        parse_xlsx(paytm_workbook_bytes)
+
+
+def test_parse_xlsx_paytm_passbook_maps_rows(paytm_workbook_bytes):
+    df = parse_xlsx(paytm_workbook_bytes, sheet_name="Passbook Payment History")
+    assert len(df) == 4
+    assert df["merchant"].tolist() == [
+        "Apollo Pharmacy",
+        "Test Person",
+        "Acme Corp",
+        "Google Play Store",
+    ]
+    assert df["type"].tolist() == ["Debit", "Debit", "Credit", "Debit"]
+    assert df["amount"].tolist() == [393.89, 2400.0, 1500.0, 299.0]
+    assert str(df["date"].iloc[0].date()) == "2026-08-25"
+
+
+def test_parse_xlsx_unknown_sheet(paytm_workbook_bytes):
+    with pytest.raises(ParseError, match="Sheet not found"):
+        parse_xlsx(paytm_workbook_bytes, sheet_name="Nope")

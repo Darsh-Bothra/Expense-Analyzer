@@ -12,6 +12,7 @@ from app.schemas.models import (
     NamedCount,
     ToolCallTrace,
     TransactionRow,
+    WorkbookInspect,
 )
 
 __all__ = [
@@ -28,4 +29,5 @@ __all__ = [
     "NamedCount",
     "ToolCallTrace",
     "TransactionRow",
+    "WorkbookInspect",
 ]

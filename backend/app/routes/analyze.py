@@ -3,15 +3,15 @@ import time
 from collections import deque
 from threading import Lock
 
-from fastapi import APIRouter, File, HTTPException, Request, UploadFile
+from fastapi import APIRouter, File, Form, HTTPException, Request, UploadFile
 
 from app.db import persist_dataset
 from app.llm.insights import generate_insights
 from app.observability import StepTimer, record_run
 from app.pipeline.analytics import build_facts
 from app.pipeline.categorize import add_categories
-from app.pipeline.parser import ParseError, parse_upload
-from app.schemas import AnalyzeResponse, TransactionRow
+from app.pipeline.parser import ParseError, inspect_upload, parse_upload
+from app.schemas import AnalyzeResponse, TransactionRow, WorkbookInspect
 
 router = APIRouter()
 
@@ -39,8 +39,29 @@ def _rate_limit_hit(client_ip: str) -> bool:
         return False
 
 
+@router.post("/inspect-workbook", response_model=WorkbookInspect)
+async def inspect_workbook(file: UploadFile = File(...)):
+    name = (file.filename or "").lower()
+    if not name.endswith((".csv", ".xlsx")):
+        raise HTTPException(status_code=400, detail="Please upload a .csv or .xlsx file.")
+    content = await file.read()
+    if len(content) > MAX_FILE_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail=f"File too large. Limit is {MAX_FILE_BYTES} bytes.",
+        )
+    try:
+        return inspect_upload(content, file.filename or name)
+    except ParseError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
 @router.post("/analyze", response_model=AnalyzeResponse)
-async def analyze(request: Request, file: UploadFile = File(...)):
+async def analyze(
+    request: Request,
+    file: UploadFile = File(...),
+    sheet: str | None = Form(None),
+):
     client_ip = request.client.host if request.client else "unknown"
     if _rate_limit_hit(client_ip):
         raise HTTPException(
@@ -69,7 +90,7 @@ async def analyze(request: Request, file: UploadFile = File(...)):
         )
     try:
         with timer.step("parse"):
-            df = parse_upload(content, file.filename or name)
+            df = parse_upload(content, file.filename or name, sheet_name=sheet or None)
     except ParseError as exc:
         record_run(
             timer,

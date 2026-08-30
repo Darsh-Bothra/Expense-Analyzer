@@ -26,7 +26,7 @@ Expense categories: Food, Travel, Shopping, Bills, Entertainment, Others.
 
 ## Pipeline
 
-1. Accept CSV or `.xlsx` (`date`, `merchant`, `amount`, `type`; Excel: first sheet).
+1. Accept CSV or `.xlsx`. Excel shows a sheet picker. Generic sheets still need `date`, `merchant`, `amount`, `type`. Paytm's `Passbook Payment History` is mapped automatically (signed Amount → Credit/Debit).
 2. Parse and drop invalid rows (bad dates, empty merchant, negative amount, type not Credit/Debit).
 3. Assign categories from the merchant map.
 4. Compute `FactsPayload` (KPIs, top merchants, categories, weekend share).
@@ -62,6 +62,7 @@ docs/
 sample_data/transactions.csv
 sample_data/transactions.xlsx
 sample_data/transactions_1000.csv
+sample_data/paytm_passbook_sample.xlsx
 backend/
   pyproject.toml
   .env.example
@@ -69,7 +70,7 @@ backend/
     main.py
     schemas/
     db/
-    pipeline/            parser.py, categorize.py, analytics.py
+    pipeline/            parser.py, adapters/paytm.py, categorize.py, analytics.py
     llm/                 client.py, insights.py, chat.py, tools.py
     observability/
     prompts/             insights.py, chat.py

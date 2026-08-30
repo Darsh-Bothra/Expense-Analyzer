@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173 and upload `sample_data/transactions.csv`, `sample_data/transactions.xlsx`, or `sample_data/transactions_1000.csv`.
+Open http://localhost:5173 and upload `sample_data/transactions.csv`, `sample_data/transactions.xlsx`, or `sample_data/paytm_passbook_sample.xlsx` (select **Passbook Payment History**).
 
 Observability is in the same app at http://localhost:5173/observability. Next.js rewrites `/api/backend/*` to FastAPI on port 8000.
 
