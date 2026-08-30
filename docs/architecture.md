@@ -59,6 +59,7 @@ docs/
   api.md
   chat.md
   observability.md
+  deployment/            EC2 layout and operations
 sample_data/transactions.csv
 sample_data/transactions.xlsx
 sample_data/transactions_1000.csv
