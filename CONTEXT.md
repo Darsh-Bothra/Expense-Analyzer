@@ -6,5 +6,6 @@ Detailed notes live under [docs/](docs/):
 - [HTTP API](docs/api.md) — endpoints, schemas, analyze guardrails
 - [Chat](docs/chat.md) — persisted datasets and tool-calling agent
 - [Observability](docs/observability.md) — latency, tokens, cost
+- [Deployment](docs/deployment/) — AWS EC2, TLS, operations, LLM env on the VM
 
 How to run and test: [README.md](README.md).

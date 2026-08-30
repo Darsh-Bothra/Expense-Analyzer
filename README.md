@@ -10,6 +10,7 @@ Upload a UPI-style transaction CSV or Excel (`.xlsx`), get spend totals plus mer
 | [docs/api.md](docs/api.md) | HTTP endpoints, request/response shapes, `/analyze` guardrails |
 | [docs/chat.md](docs/chat.md) | Persisted datasets, tool-calling agent, template fallback |
 | [docs/observability.md](docs/observability.md) | Step latency, tokens, estimated cost |
+| [docs/deployment/](docs/deployment/) | AWS EC2 layout, TLS, day-to-day ops, shipping updates |
 
 ## Layout
 
@@ -29,7 +30,7 @@ frontend/                 Next.js + shadcn UI (port 5173)
 observability-ui/         Compatibility stub (dashboard lives in frontend)
 sample_data/              Example CSV and XLSX
 docker-compose.yml        Backend + frontend with healthchecks
-docs/                     Architecture and API notes
+docs/                     Architecture, API, and deployment notes
 ```
 
 ## Run
