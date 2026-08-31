@@ -51,7 +51,7 @@ Do **not** expose **8000**. **5173** can stay closed to the world once Nginx is 
 - `backend` — FastAPI, health `GET /health`, volume `backend-data` → `/app/data`
 - `frontend` — production `next start` on 5173
 
-LLM settings come from the project-root `.env` on the VM (`chmod 600`). Do not commit that file. Repo defaults (if `.env` is missing) are `LLM_PROVIDER=openai` and `LLM_MODEL=gpt-4o-mini`. The **running** model is whatever is in the VM `.env`; changing it does not require a code change. See [operations.md](operations.md#changing-the-llm).
+LLM settings come from `backend/.env` on the VM (`chmod 600`). Do not commit that file. The **running** model is whatever is in that file; changing it does not require a code change. See [operations.md](operations.md#changing-the-llm).
 
 ## Nginx
 

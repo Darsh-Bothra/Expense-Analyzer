@@ -17,7 +17,7 @@ curl -I https://expenseanalyze.work.gd
 
 Both containers should be `healthy`. `curl` should be `200` (or a short redirect).
 
-**Secrets.** Edit `~/Expense-Analyzer/.env` only on the VM. After a change:
+**Secrets.** Edit `~/Expense-Analyzer/backend/.env` on the VM (`chmod 600`). Compose loads that file into the backend container. After a change:
 
 ```bash
 cd ~/Expense-Analyzer
@@ -60,7 +60,7 @@ scp -i ~/Downloads/expense-analyzer.pem \
 
 No code change. Provider, model, and key are env-only ([docs/architecture.md](../architecture.md#switch-llm-env-only)).
 
-On the VM, edit `~/Expense-Analyzer/.env`. Examples:
+On the VM, edit `~/Expense-Analyzer/backend/.env`. Examples:
 
 ```bash
 LLM_PROVIDER=openai
