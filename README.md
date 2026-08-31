@@ -2,6 +2,8 @@
 
 Upload a UPI-style transaction CSV or Excel (`.xlsx`), get spend totals plus merchant and category breakdowns, then a grounded JSON summary from a small LLM (or a template if no API key). After upload, ask questions about that statement in chat; the model calls typed analytics tools instead of inventing numbers.
 
+**Live demo:** [https://expenseanalyze.work.gd](https://expenseanalyze.work.gd) — AWS EC2, Docker Compose, Nginx, HTTPS. The instance may be stopped when idle; see [docs/deployment/](docs/deployment/).
+
 ## Docs
 
 | File | Contents |
